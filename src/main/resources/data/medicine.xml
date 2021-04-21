@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<medicines
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.example.org/devices"
+        xsi:schemaLocation="medicine.xsd">
+    <medicine onReceipt="false" >
+        <name>Магний B6</name>
+        <farm>Санофи</farm>
+        <group>VITAMINES</group>
+        <analogs>
+            <analog>sdsdfsdf</analog>
+            <analog>Магнелек</analog>
+            <analog>Магвит</analog>
+            <analog>Магнетаб</analog>
+        </analogs>
+        <versions>
+            <version myType="таблетки"> <!--attribute enum here-->
+                <certificate>Рег. №: 10476/16 от 27.04.2016 - Действующее</certificate>
+                <package>Таблетки, покрытые оболочкой 470 мг+5 мг: 50 шт.</package>
+                <dosage>По 2 таблетки, 3 раза в день,</dosage>
+            </version>
+            <version>
+                <certificate>Рег. №: 9120/09/14/17 от 02.12.2014 - Действующее</certificate>
+                <package>Раствор для приема внутрь: 10 мл амп. 10 шт.</package>
+                <dosage>3-4 ампулы в сутки, разделенные на 2-3 приема во время еды.</dosage>
+            </version>
+        </versions>
+    </medicine>
+</medicines>

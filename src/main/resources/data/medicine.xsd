@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://www.example.org/medicines"
+        xmlns:tns="http://www.example.org/medicines"
+        elementFormDefault="qualified">
+    <element name="medicines">
+        <complexType>
+            <sequence>
+                <element name="medicine" type="tns:Medicine" minOccurs="1" maxOccurs="unbounded" />
+            </sequence>
+        </complexType>
+    </element>
+
+    <complexType name="Medicine">
+        <sequence>
+            <element name="name" type="string" />
+            <element name="farm" type="string" />
+            <element name="group" type="tns:Group" />
+            <element name="analogs">
+                <complexType>
+                    <sequence>
+                        <element name="analog" type="string" minOccurs="1" maxOccurs="unbounded" />
+                    </sequence>
+                </complexType>
+            </element>
+            <element name="versions" type="string" />
+        </sequence>
+        <attribute name="id" type="ID" use="required" />
+        <attribute name="onReceipt" type="boolean" use="required" default="true" />
+        <attribute name="price" type="string" use="optional" default="more than 50"/>
+    </complexType>
+
+    <complexType name="Version">
+        <sequence>
+            <element name="certificate" type="string"/>
+            <element name="package" type="string"/>  чтобы здесь добавить энам, стаить тайп тнс пэкэдж, а ниже, после комплекс тайп отдельная секция Симпл тайп Пекедж с энамамми
+            <element name="dosage" type="string"/>
+        </sequence>
+    </complexType>
+
+
+    <simpleType name="Group">
+        <restriction base="string">
+            <enumeration value="VITAMINS" />
+            <enumeration value="CARDIO" />
+            <enumeration value="ANTIBIOTICS" />
+            <enumeration value="PAIN RELIEVERS" />
+        </restriction>
+    </simpleType>
+
+</schema>
+
+<!--<element name="medicine"-->
+<!--         type="string"-->
+<!--         minOccurs="1"-->
+<!--         maxOccurs="unbounded"/>-->
+<!--<element name="name"/>-->
+<!--<element name="farm" type="string"/>-->
+<!--<element name="group" type="string"/>-->
+<!--<element name="analogs" type="string"/>-->
+<!--<element name="versions" type="string"/>-->
+
+<!--<attribute name="onReceipt" type="boolean" default="true" use="required" />-->
+<!--<attribute name="price" use="optional" default="more than 50"/>-->
+
+<!--<simpleType name="ddd">-->
+<!--<restriction base="string">-->
+<!--    <enumeration value="less than 10"></enumeration>-->
+<!--    <enumeration value="less than 20"></enumeration>-->
+<!--    <enumeration value="less than 30"></enumeration>-->
+<!--    <enumeration value="more than 50"></enumeration>-->
+<!--</restriction>-->
+<!--</simpleType>-->
