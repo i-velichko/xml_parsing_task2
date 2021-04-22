@@ -2,7 +2,7 @@
 <medicines
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xmlns="http://www.example.org/medicines"
-        xsi:schemaLocation="medicine.xsd">
+>
     <medicine id="M1" onReceipt="false">
         <name>Magne B6</name>
         <group>VITAMINS</group>
