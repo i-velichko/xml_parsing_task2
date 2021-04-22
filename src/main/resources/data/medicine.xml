@@ -5,7 +5,6 @@
         xsi:schemaLocation="medicine.xsd">
     <medicine id="M1" onReceipt="false">
         <name>Magne B6</name>
-        <farm>Sanofi</farm>
         <group>VITAMINS</group>
         <analogs>
             <analog>Magnelek</analog>
@@ -14,12 +13,14 @@
         </analogs>
         <versions>
             <version>
+                <pharm>SANOFI-AVENTIS FRANCE</pharm>
                 <certificate>№: 10476/16 от 27.04.2016 - Acting</certificate>
                 <package>PILLS</package>
                 <dosage>2 tablets, 3 times a day</dosage>
                 <expiration_date>2023-04</expiration_date>
             </version>
             <version>
+                <pharm>SANOFI-AVENTIS FRANCE</pharm>
                 <certificate>№: 9120/09/14/17 от 02.12.2014 - Acting</certificate>
                 <package>SOLUTE</package>
                 <dosage>3-4 ampoules per day, divided into 2-3 doses with meals.</dosage>
@@ -28,15 +29,15 @@
         </versions>
     </medicine>
 
-    <medicine id="M2" onReceipt="false">
+    <medicine id="M2" onReceipt="true">
         <name>Captopril</name>
-        <farm>Pharmland</farm>
         <group>HYPOTENSIVE</group>
         <analogs>
             <analog>Blocordil</analog>
         </analogs>
         <versions>
             <version>
+                <pharm>PHARMLAND</pharm>
                 <certificate>№: 17/12/2039 от 27.12.2017 - Acting</certificate>
                 <package>PILLS</package>
                 <dosage>on the recommendation of a doctor</dosage>
@@ -47,7 +48,6 @@
 
     <medicine id="M3" onReceipt="false">
         <name>Bisoprolol</name>
-        <farm>Farmtechnology</farm>
         <group>HYPOTENSIVE</group>
         <analogs>
             <analog>Concor</analog>
@@ -55,12 +55,14 @@
         </analogs>
         <versions>
             <version>
+                <pharm>PHARMTECHNOLOGY</pharm>
                 <certificate>№: 16/05/1900 от 17.05.2016 - Acting</certificate>
                 <package>PILLS</package>
                 <dosage>on the recommendation of a doctor</dosage>
                 <expiration_date>2023-04</expiration_date>
             </version>
             <version>
+                <pharm>MINSKINTERKAPS</pharm>
                 <certificate>№: 14/08/2269 от 28.08.2014 - Acting</certificate>
                 <package>CAPSULES</package>
                 <dosage>on the recommendation of a doctor</dosage>
@@ -71,7 +73,6 @@
 
     <medicine id="M4" onReceipt="false">
         <name>Devit 50000</name>
-        <farm>Lamyra LLP</farm>
         <group>VITAMINS</group>
         <analogs>
             <analog>Akva D3</analog>
@@ -80,6 +81,7 @@
         </analogs>
         <versions>
             <version>
+                <pharm>LAMYRA LLP</pharm>
                 <certificate>№: 10436/15/16 от 03.12.2015 - Acting</certificate>
                 <package>PILLS</package>
                 <dosage>1 tablet for 7 weeks</dosage>
@@ -88,9 +90,8 @@
         </versions>
     </medicine>
 
-    <medicine id="M5" onReceipt="true">
+    <medicine id="M5" onReceipt="false">
         <name>Cardiomagnyl</name>
-        <farm>Nycomed Danmark</farm>
         <group>CARDIO</group>
         <analogs>
             <analog>Akard</analog>
@@ -99,6 +100,7 @@
         </analogs>
         <versions>
             <version>
+                <pharm>NYCOMED DANMARK</pharm>
                 <certificate>№: 2192/96/02/07/12 от 07.09.2012 - Acting</certificate>
                 <package>PILLS</package>
                 <dosage>on the recommendation of a doctor</dosage>
@@ -107,9 +109,8 @@
         </versions>
     </medicine>
 
-    <medicine id="M6" onReceipt="true">
+    <medicine id="M6" onReceipt="false">
         <name>Nimesulide</name>
-        <farm>Pharmland</farm>
         <group>PAIN RELIEVERS</group>
         <analogs>
             <analog>Nimesil</analog>
@@ -118,6 +119,7 @@
         </analogs>
         <versions>
             <version>
+                <pharm>PHARMLAND</pharm>
                 <certificate>№: 19/06/2226 от 05.06.2019 - Acting</certificate>
                 <package>PILLS</package>
                 <dosage>Inside for adults, 100-200 mg 2 times / day, for children - 1.5 mg / kg 2-3 times / day.</dosage>
@@ -128,19 +130,20 @@
 
     <medicine id="M7" onReceipt="false">
         <name>Ketanov</name>
-        <farm>S.C. Terapia</farm>
         <group>PAIN RELIEVERS</group>
         <analogs>
             <analog>Dolaren</analog>
         </analogs>
         <versions>
             <version>
+                <pharm>S.C. TERAPIA</pharm>
                 <certificate>№: 695/95/2000/05/10/15 от 03.12.2015 - Acting</certificate>
                 <package>PILLS</package>
                 <dosage>Ketanov is recommended for short-term use (up to 5 days).</dosage>
                 <expiration_date>2024-04</expiration_date>
             </version>
             <version>
+                <pharm>RANBAXY LABORATORIES</pharm>
                 <certificate>№: 9304/95/2000/05/10 от 01.06.2010 - Expired</certificate>
                 <package>SOLUTE</package>
                 <dosage>Adults and children over 16 years of age are prescribed 10 mg (1 tab.)</dosage>
@@ -151,7 +154,6 @@
 
     <medicine id="M8" onReceipt="false">
         <name>Paracetamol</name>
-        <farm>Borisov plant of medical preparations</farm>
         <group>ANTIPYRETIC</group>
         <analogs>
             <analog>Angrycold</analog>
@@ -159,12 +161,14 @@
         </analogs>
         <versions>
             <version>
+                <pharm>BORISOV PLANT OF MEDICAL PREPARATIONS</pharm>
                 <certificate>№: 16/04/280 от 28.04.2016 - Acting</certificate>
                 <package>PILLS</package>
                 <dosage>Frequency rate of application - 4 times / day with an interval of at least 4 hours. The maximum duration of treatment is 3 days.</dosage>
                 <expiration_date>2024-04</expiration_date>
             </version>
             <version>
+                <pharm>MONFARM</pharm>
                 <certificate>№: 3188/98/03/08/12/13/17 от 30.11.2017 - Expired</certificate>
                 <package>SUPPOSITORY</package>
                 <dosage>Single doses for oral administration for children aged 6-12 years - 250-500 mg, 1-5 years - 120-250 mg, from 3 months to 1 year - 60-120 mg, up to 3 months - 10 mg / kg. Single doses for rectal administration in children aged 6-12 years - 250-500 mg, 1-5 years - 125-250 mg.</dosage>
@@ -173,30 +177,178 @@
         </versions>
     </medicine>
 
+    <medicine id="M9" onReceipt="false">
+        <name>Amoxicillin</name>
+        <group>ANTIBIOTICS</group>
+        <analogs>
+            <analog>Ospamox</analog>
+            <analog>Amoxil</analog>
+            <analog>Xykoncyl</analog>
+            <analog>Amocyn</analog>
+        </analogs>
+        <versions>
+            <version>
+                <pharm>PHARMLAND</pharm>
+                <certificate>12/08/1226 от 01.03.2010 - Expired</certificate>
+                <package>CAPSULES</package>
+                <dosage>Adults are prescribed 500 mg 3 times / day. In severe disease - 1 g 3 times / day</dosage>
+                <expiration_date>2024-04</expiration_date>
+            </version>
+            <version>
+                <pharm>PHARMTECHNOLOGY</pharm>
+                <certificate>№: 17/03/2000 от 22.03.2017 - Acting</certificate>
+                <package>PILLS</package>
+                <dosage>Individual. on the recommendation of a doctor</dosage>
+                <expiration_date>2024-04</expiration_date>
+            </version>
+        </versions>
+    </medicine>
 
+    <medicine id="M10" onReceipt="true">
+        <name>Azithromycin</name>
+        <group>ANTIBIOTICS</group>
+        <analogs>
+            <analog>Sumalek</analog>
+            <analog>Ziromyn</analog>
+            <analog>Zitmak</analog>
+            <analog>Azibiot</analog>
+        </analogs>
+        <versions>
+            <version>
+                <pharm>PHARMLAND</pharm>
+                <certificate>№: 16/11/2204 от 25.03.2014 - Acting</certificate>
+                <package>PILLS</package>
+                <dosage>The tablets are taken orally, 1 time / day, without chewing, an hour before meals or 2 hours after meals, because food affects the absorption of the drug</dosage>
+                <expiration_date>2023-04</expiration_date>
+            </version>
+            <version>
+                <pharm>BORISOV PLANT OF MEDICAL PREPARATIONS</pharm>
+                <certificate>№: 16/08/1108 от 02.08.2016 - Acting</certificate>
+                <package>CAPSULES</package>
+                <dosage>The drug is administered orally, 1 hour before or 2 hours after a meal, 1 time / day.</dosage>
+                <expiration_date>2023-04</expiration_date>
+            </version>
+        </versions>
+    </medicine>
 
+    <medicine id="M11" onReceipt="false">
+        <name>Septotsid</name>
+        <group>ANTISEPTIC</group>
+        <analogs>
+            <analog>non</analog>
+        </analogs>
+        <versions>
+            <version>
+                <pharm>BELASEPTIKA</pharm>
+                <certificate>№: 15/11/838 от 03.04.2014 - Acting</certificate>
+                <package>SOLUTE</package>
+                <dosage>It is used depending on the indications and dosage form.</dosage>
+                <expiration_date>2025-04</expiration_date>
+            </version>
+        </versions>
+    </medicine>
+
+    <medicine id="M12" onReceipt="false">
+        <name>Spirt Etilovy 70%</name>
+        <group>ANTISEPTIC</group>
+        <analogs>
+            <analog>non</analog>
+        </analogs>
+        <versions>
+            <version>
+                <pharm>BELMEDPREPERATY</pharm>
+                <certificate>№: 15/11/1788 от 10.11.2015 - Acting</certificate>
+                <package>SOLUTE</package>
+                <dosage>It is used depending on the indications and dosage form.</dosage>
+                <expiration_date>2025-04</expiration_date>
+            </version>
+        </versions>
+    </medicine>
+
+    <medicine id="M13" onReceipt="false">
+        <name>Kapsikam</name>
+        <group>PAIN RELIEVERS</group>
+        <analogs>
+            <analog>non</analog>
+        </analogs>
+        <versions>
+            <version>
+                <pharm>GRINDEX</pharm>
+                <certificate>№: 10234/14/16 от 24.04.2014 - Acting</certificate>
+                <package>SALVE</package>
+                <dosage>It is used depending on the indications and dosage form.</dosage>
+                <expiration_date>2023-04</expiration_date>
+            </version>
+        </versions>
+    </medicine>
+
+    <medicine id="M14" onReceipt="false">
+        <name>Ibuprofen</name>
+        <group>ANTIPYRETIC</group>
+        <analogs>
+            <analog>Faspik</analog>
+            <analog>Suprafen</analog>
+            <analog>Ibufen</analog>
+        </analogs>
+        <versions>
+            <version>
+                <pharm>BELMEDPREPERATY</pharm>
+                <certificate>№: 15/09/97 от 24.09.2014 - Acting</certificate>
+                <package>PILLS</package>
+                <dosage>Inside, after eating. The dosage regimen is set individually depending on the indications.</dosage>
+                <expiration_date>2024-04</expiration_date>
+            </version>
+            <version>
+                <pharm>BELMEDPREPERATY</pharm>
+                <certificate>№: 17/01/1274 от 18.08.2015 - Acting</certificate>
+                <package>SALVE</package>
+                <dosage>
+                    Outwardly. A strip of gel, ointment or cream 5-10 cm long is applied to the affected area and rubbed thoroughly with light movements until completely absorbed 3-4 times a day for 2-3 weeks.</dosage>
+                <expiration_date>2023-04</expiration_date>
+            </version>
+        </versions>
+
+    </medicine>
+
+    <medicine id="M15" onReceipt="true">
+        <name>Dexamethason</name>
+        <group>HORMONAL</group>
+        <analogs>
+            <analog>Oftan</analog>
+            <analog>Maxidex</analog>
+            <analog>Dexaven</analog>
+        </analogs>
+        <versions>
+            <version>
+                <pharm>KRKA</pharm>
+                <certificate>№: 9266/94/2000/05/10/15 от 14.04.2015 - Acting</certificate>
+                <package>PILLS</package>
+                <dosage>The dose is set individually depending on the disease.</dosage>
+                <expiration_date>2026-04</expiration_date>
+            </version>
+        </versions>
+    </medicine>
+
+    <medicine id="M16" onReceipt="false">
+        <name>Corvalol</name>
+        <group>SEDATIVES</group>
+        <analogs>
+            <analog>non</analog>
+        </analogs>
+        <versions>
+            <version>
+                <pharm>BELMEDPREPERATY</pharm>
+                <certificate>№: 18/08/1588 от 27.08.2018 - Acting</certificate>
+                <package>DROPS</package>
+                <dosage>The dose is set individually depending on the disease.</dosage>
+                <expiration_date>2026-04</expiration_date>
+            </version>
+        </versions>
+    </medicine>
 
 </medicines>
 
 
-<!--        3) антибиотики-->
-<!--        - азитромицин-->
-<!--        - цефтриаксон-->
-<!--        - амоксициллин-->
 
-<!--        5)гормоны-->
-<!--        - дексаметазон-->
-<!--        - любое противозачаточное в гугле-->
-<!--        -инсулин-->
-<!--        - адреналин-->
-<!--        6) жаропонижающее-->
-<!--        - парацетамол-->
-<!--        - ибупрофен-->
-<!--        7) антисептик-->
-<!--        - септоцид-->
-<!--        - спирт (?)-->
-<!--        - на основе изопрапонола-->
-<!--        8) гипотензивные-->
-<!--        -каптоприл-->
-<!--        - бисопролол-->
-<!--        - куча их в гугле-->
+
+

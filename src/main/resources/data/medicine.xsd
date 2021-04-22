@@ -14,7 +14,6 @@
     <complexType name="Medicine">
         <sequence>
             <element name="name" type="string" />
-            <element name="farm" type="string" />
             <element name="group" type="tns:Group"/>
             <element name="analogs">
                 <complexType>
@@ -37,6 +36,7 @@
 
     <complexType name="Version">
         <sequence>
+            <element name="pharm" type="tns:Pharm" />
             <element name="certificate" type="string"/>
             <element name="package" type="tns:Package"/>
             <element name="dosage" type="string"/>
@@ -49,7 +49,7 @@
             <enumeration value="PILLS"/>
             <enumeration value="SOLUTE"/>
             <enumeration value="SUPPOSITORY"/>
-            <enumeration value="SPRAY"/>
+            <enumeration value="DROPS"/>
             <enumeration value="AMPULES"/>
             <enumeration value="SALVE"/>
             <enumeration value="POWDER"/>
@@ -67,6 +67,26 @@
             <enumeration value="ANTIPYRETIC"/>
             <enumeration value="ANTISEPTIC"/>
             <enumeration value="HYPOTENSIVE"/>
+            <enumeration value="SEDATIVES"/>
+        </restriction>
+    </simpleType>
+
+    <simpleType name="Pharm">
+        <restriction base="string">
+            <enumeration value="SANOFI-AVENTIS FRANCE"/>
+            <enumeration value="PHARMLAND"/>
+            <enumeration value="PHARMTECHNOLOGY"/>
+            <enumeration value="LAMYRA LLP"/>
+            <enumeration value="NYCOMED DANMARK"/>
+            <enumeration value="S.C. TERAPIA"/>
+            <enumeration value="BORISOV PLANT OF MEDICAL PREPARATIONS"/>
+            <enumeration value="MINSKINTERKAPS"/>
+            <enumeration value="MONFARM"/>
+            <enumeration value="RANBAXY LABORATORIES"/>
+            <enumeration value="BELASEPTIKA"/>
+            <enumeration value="BELMEDPREPERATY"/>
+            <enumeration value="GRINDEX"/>
+            <enumeration value="KRKA"/>
         </restriction>
     </simpleType>
 
