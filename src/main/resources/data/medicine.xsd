@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <schema xmlns="http://www.w3.org/2001/XMLSchema"
-        targetNamespace="http://www.example.org/medicines"
-        xmlns:tns="http://www.example.org/medicines"
+        targetNamespace="http://www.example.com/medicines"
+        xmlns:tns="http://www.example.com/medicines"
         elementFormDefault="qualified">
     <element name="medicines">
         <complexType>
             <sequence>
-                <element name="medicine" type="tns:Medicine" minOccurs="1" maxOccurs="unbounded" />
+                <element name="medicine" type="tns:medicine" maxOccurs="unbounded" />
+                <element name="homeopathy" type="tns:homeopathy" maxOccurs="unbounded" />
+                <element name="vaccine" type="tns:vaccine" minOccurs="0" maxOccurs="unbounded" />
             </sequence>
         </complexType>
     </element>
 
-    <complexType name="Medicine">
+    <complexType name="medicine">
         <sequence>
-            <element name="name" type="string" />
-            <element name="farm" type="string" />
-            <element name="group" type="tns:Group"/>
+            <element name="name" type="string"/>
+            <element name="group" type="tns:group"/>
             <element name="analogs">
                 <complexType>
                     <sequence>
@@ -23,56 +24,79 @@
                     </sequence>
                 </complexType>
             </element>
-            <element name="versions" type="tns:Versions"/>
+            <element name="versions" type="tns:versions"/>
         </sequence>
-        <attribute name="id" type="tns:medicineID" use="required"/>
-        <attribute name="onReceipt" type="boolean" use="optional" default="true"/>
+        <attribute name="id" type="tns:medicineID" use="required" />
+        <attribute name="prescription" type="boolean" use="optional" default="true"/>
     </complexType>
 
-    <complexType name="Versions">
+    <complexType name="homeopathy">
+        <complexContent>
+            <extension base="tns:medicine">
+                <sequence>
+                    <element name="active_substance" type="string"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+
+    <simpleType name="medicineID">
+        <restriction base="ID">
+            <pattern value="\w{1,20}" />
+        </restriction>
+    </simpleType>
+
+    <complexType name="versions">
         <sequence>
-            <element name="version" type="tns:Version" minOccurs="1" maxOccurs="unbounded"/>
+            <element name="version" type="tns:version" minOccurs="1" maxOccurs="unbounded"/>
         </sequence>
     </complexType>
 
-    <complexType name="Version">
+    <complexType name="version">
         <sequence>
+            <element name="pharm" type="string"/>
             <element name="certificate" type="string"/>
-            <element name="package" type="tns:Package"/>
+            <element name="package" type="tns:package"/>
             <element name="dosage" type="string"/>
             <element name="expiration_date" type="gYearMonth"/>
         </sequence>
     </complexType>
 
-    <simpleType name="Package">
+    <complexType name="vaccine">
+        <complexContent>
+            <extension base="tns:medicine">
+                <sequence>
+                    <element name="bacterium" type="string"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+
+    <simpleType name="package">
         <restriction base="string">
-            <enumeration value="PILLS"/>
-            <enumeration value="SOLUTE"/>
-            <enumeration value="SUPPOSITORY"/>
-            <enumeration value="SPRAY"/>
-            <enumeration value="AMPULES"/>
-            <enumeration value="SALVE"/>
-            <enumeration value="POWDER"/>
-            <enumeration value="CAPSULES"/>
+            <enumeration value="Pills"/>
+            <enumeration value="Solute"/>
+            <enumeration value="Suppository"/>
+            <enumeration value="Drops"/>
+            <enumeration value="Ampules"/>
+            <enumeration value="Salve"/>
+            <enumeration value="Powder"/>
+            <enumeration value="Capsules"/>
         </restriction>
     </simpleType>
 
-    <simpleType name="Group">
+    <simpleType name="group">
         <restriction base="string">
-            <enumeration value="VITAMINS"/>
-            <enumeration value="CARDIO"/>
-            <enumeration value="ANTIBIOTICS"/>
-            <enumeration value="PAIN RELIEVERS"/>
-            <enumeration value="HORMONAL"/>
-            <enumeration value="ANTIPYRETIC"/>
-            <enumeration value="ANTISEPTIC"/>
-            <enumeration value="HYPOTENSIVE"/>
-        </restriction>
-    </simpleType>
-
-    <simpleType name="medicineID">
-        <restriction base="ID">
-            <pattern value="\w{1,20}"/>
+            <enumeration value="Vitamins"/>
+            <enumeration value="Cardio"/>
+            <enumeration value="Antibiotics"/>
+            <enumeration value="Pain_relievers"/>
+            <enumeration value="Hormonal"/>
+            <enumeration value="Antipyretic"/>
+            <enumeration value="Antiseptic"/>
+            <enumeration value="Hypotensive"/>
+            <enumeration value="Sedatives"/>
+            <enumeration value="Vaccines"/>
         </restriction>
     </simpleType>
 

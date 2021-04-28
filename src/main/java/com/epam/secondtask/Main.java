@@ -1,7 +1,7 @@
 package com.epam.secondtask;
 
-import com.epam.secondtask.model.People;
-import com.epam.secondtask.model.Root;
+import com.epam.secondtask.model.example.People;
+import com.epam.secondtask.model.example.Root;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -73,10 +73,11 @@ public class Main {
 
         }
 
-        private static Document buildDocument () throws Exception {
-            File file = new File("src/main/resources/data/test.xml");
-            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-            return dbf.newDocumentBuilder().parse(file);
-        }  //ксок кода от обьявления файла, открывает файл для парсинга
     }
+
+    private static Document buildDocument() throws Exception {
+        File file = new File("src/main/resources/data/test.xml");
+        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+        return dbf.newDocumentBuilder().parse(file);
+    }  //ксок кода от обьявления файла, открывает файл для парсинга
 }

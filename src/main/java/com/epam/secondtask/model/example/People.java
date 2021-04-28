@@ -1,4 +1,4 @@
-package com.epam.secondtask.model;
+package com.epam.secondtask.model.example;
 
 public class People {
     private int age;
