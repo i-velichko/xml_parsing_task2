@@ -1,8 +1,12 @@
 package com.epam.secondtask.model.enumeration;
 
 public enum MedicinePackageType {
-
     PILLS,
-    SDSD,
-    SDSDDDD
+    SOLUTE,
+    SUPPOSITORY,
+    DROPS,
+    AMPULES,
+    SALVE,
+    POWDER,
+    CAPSULES
 }
