@@ -11,6 +11,9 @@ public class Version {
     private String medicineDosage;
     private YearMonth expirationDate;
 
+    public Version() {
+    }
+
     public Version(String pharmCompany, String medicineCertificate, MedicinePackageType medicinePackage, String medicineDosage, YearMonth expirationDate) {
         this.pharmCompany = pharmCompany;
         this.medicineCertificate = medicineCertificate;

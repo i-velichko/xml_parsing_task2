@@ -13,6 +13,9 @@ public class Medicine {
     private List<String> analogs;
     private List<Version> medicineVersions;
 
+    public Medicine() {
+    }
+
     public Medicine(String medicineId, boolean prescription, String medicineName, MedicineGroupType medicineGroup, List<String> analogs, List<Version> medicineVersions) {
         this.medicineId = medicineId;
         this.prescription = prescription;
