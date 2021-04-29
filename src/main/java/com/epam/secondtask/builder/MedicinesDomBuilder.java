@@ -50,8 +50,11 @@ public class MedicinesDomBuilder {
     private Medicine buildMedicine(Element medicineElement) {
         Medicine medicine = new Medicine();
 // add null check
-        medicine.setFaculty(medicineElement.getAttribute("faculty"));
-        medicine.setName(getElementTextContent(medicineElement, "name"));
+        medicine.setPrescription(Boolean.parseBoolean(medicineElement.getAttribute("prescription")));
+        medicine.setMedicineName(getElementTextContent(medicineElement, "name"));
+        medicine.setMedicineGroup(getElementTextContent(medicineElement, "name"));
+        medicine.setAnalogs(getElementTextContent(medicineElement, "name"));
+        medicine.setMedicineVersions(getElementTextContent(medicineElement, "name"));
         Integer tel = Integer.parseInt(getElementTextContent(medicineElement, "telephone"));
         medicine.setTelephone(tel);
         Student.Address address = medicine.getAddress();
@@ -61,7 +64,7 @@ public class MedicinesDomBuilder {
         address.setCountry(getElementTextContent(adressElement, "country"));
         address.setCity(getElementTextContent(adressElement, "city"));
         address.setStreet(getElementTextContent(adressElement, "street"));
-        medicine.setLogin(medicineElement.getAttribute("login"));
+        medicine.setMedicineId(medicineElement.getAttribute("id"));
         return medicine;
     }
 }
