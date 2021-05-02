@@ -27,7 +27,7 @@
             <element name="versions" type="tns:versions"/>
         </sequence>
         <attribute name="id" type="tns:medicineID" use="required" />
-        <attribute name="prescription" type="boolean" use="optional" default="true"/>
+        <attribute name="prescription" type="string" use="optional" default="true"/>
     </complexType>
 
     <complexType name="homeopathy">

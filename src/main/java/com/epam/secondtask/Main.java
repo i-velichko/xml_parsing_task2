@@ -61,7 +61,9 @@ public class Main {
             }
             medicines.add(medicine);
             }
+        medicines.forEach(System.out::println);
     }
+
 
     private static void buildVaccine() {
     }
@@ -79,10 +81,10 @@ public class Main {
             if (nextMedicineChild.getNodeType() != Node.ELEMENT_NODE) {
                 continue;
             }
-//                        String medicineID = getTextContentByElement(node, "id");   //todo
-//            medicine.setMedicineId(medicineID);//todo
-//            boolean isMedicinePrescription = Boolean.parseBoolean(getTextContentByElement(node, "prescription"));//todo
-//            medicine.setPrescription(isMedicinePrescription);//todo
+            String medicineID = node.getAttributes().getNamedItem("id").getTextContent();
+            medicine.setMedicineId(medicineID);
+//            String medicinePrescription = getTextContentByElement(node, "prescription"); //todo
+//            medicine.setPrescription(medicinePrescription);
             String medicineGroup = getTextContentByElement(node, "group");
             medicine.setMedicineGroup(MedicineGroupType.valueOf(medicineGroup.toUpperCase()));
             String medicineName  = getTextContentByElement(node, "name");
@@ -104,10 +106,8 @@ public class Main {
             Node item = childNodes.item(i);
             if (item.getNodeType() == Node.ELEMENT_NODE) {
                 Version version = readVersion(item);
-
                 versions.add(version);
             }
-
         }
         medicine.setMedicineVersions(versions);
     }

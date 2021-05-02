@@ -2,12 +2,11 @@ package com.epam.secondtask.model;
 
 import com.epam.secondtask.model.enumeration.MedicineGroupType;
 
-import java.util.Collections;
 import java.util.List;
 
 public class Medicine {
     private String medicineId;
-    private boolean prescription;
+    private String prescription;
     private String medicineName;
     private MedicineGroupType medicineGroup;
     private List<String> analogs;
@@ -16,7 +15,7 @@ public class Medicine {
     public Medicine() {
     }
 
-    public Medicine(String medicineId, boolean prescription, String medicineName, MedicineGroupType medicineGroup, List<String> analogs, List<Version> medicineVersions) {
+    public Medicine(String medicineId, String prescription, String medicineName, MedicineGroupType medicineGroup, List<String> analogs, List<Version> medicineVersions) {
         this.medicineId = medicineId;
         this.prescription = prescription;
         this.medicineName = medicineName;
@@ -33,11 +32,11 @@ public class Medicine {
         this.medicineId = medicineId;
     }
 
-    public boolean isPrescription() {
+    public String isPrescription() {
         return prescription;
     }
 
-    public void setPrescription(boolean prescription) {
+    public void setPrescription(String prescription) {
         this.prescription = prescription;
     }
 

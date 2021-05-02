@@ -58,7 +58,7 @@ public class MedicinesDomBuilder {
         ArrayList<String> analogs = new ArrayList<>();
 // add null check
         medicine.setMedicineId((medicineElement.getAttribute("id")));
-        medicine.setPrescription(Boolean.parseBoolean(medicineElement.getAttribute("prescription")));
+//        medicine.setPrescription(Boolean.parseBoolean(medicineElement.getAttribute("prescription")));
         medicine.setMedicineName(getElementTextContent(medicineElement, "name"));
         medicine.setMedicineGroup(MedicineGroupType.valueOf(getElementTextContent(medicineElement,"group").toUpperCase())); //todo
 

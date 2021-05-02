@@ -7,7 +7,7 @@ import java.util.List;
 public class Vaccine extends Medicine {
     private String bacteria;
 
-    public Vaccine(String medicineId, boolean prescription, String medicineName, MedicineGroupType medicineGroup, List<String> analogs, List<Version> medicineVersions) {
+    public Vaccine(String medicineId, String prescription, String medicineName, MedicineGroupType medicineGroup, List<String> analogs, List<Version> medicineVersions) {
         super(medicineId, prescription, medicineName, medicineGroup, analogs, medicineVersions);
     }
 
