@@ -30,20 +30,16 @@ public class Main {
         }
 
         Node rootNodeMedicines = doc.getFirstChild();  //получил корневой medicines
-        System.out.println("Самый корневой элемент - " + rootNodeMedicines.getNodeName());
-
         NodeList medicinesChilds = rootNodeMedicines.getChildNodes(); //Получаю все обьекты Medicine, Vaccine и Homeopathy
         Node medicineNode = null;
         Node homeopathyNode = null;
         Node vaccineNode = null;
-        int count = 0;
+
         for (int i = 0; i < medicinesChilds.getLength(); i++) {
             Medicine medicine = new Medicine();
-            if (medicinesChilds.item(i).getNodeType() != Node.ELEMENT_NODE) {  //фильтрую барахло типа #text
-                count += 1;
+            if (medicinesChilds.item(i).getNodeType() != Node.ELEMENT_NODE) {
                 continue;
             }
-            System.out.println("Ребенок Медицинс -  " + count + " " + medicinesChilds.item(i).getNodeName());
 
             switch (medicinesChilds.item(i).getNodeName()) {
                 case "medicine" -> {
@@ -60,10 +56,9 @@ public class Main {
                 }
             }
             medicines.add(medicine);
-            }
+        }
         medicines.forEach(System.out::println);
     }
-
 
     private static void buildVaccine() {
     }
@@ -83,18 +78,15 @@ public class Main {
             }
             String medicineID = node.getAttributes().getNamedItem("id").getTextContent();
             medicine.setMedicineId(medicineID);
-//            String medicinePrescription = getTextContentByElement(node, "prescription"); //todo
-//            medicine.setPrescription(medicinePrescription);
+            String medicinePrescription = node.getAttributes().getNamedItem("prescription").getTextContent();
+            medicine.setPrescription(medicinePrescription);
             String medicineGroup = getTextContentByElement(node, "group");
             medicine.setMedicineGroup(MedicineGroupType.valueOf(medicineGroup.toUpperCase()));
-            String medicineName  = getTextContentByElement(node, "name");
+            String medicineName = getTextContentByElement(node, "name");
             medicine.setMedicineName(medicineName);
-            System.out.println("Ребенок Медицины - " + nextMedicineChild.getNodeName());
             switch (nextMedicineChild.getNodeName()) {
-                case "analogs" ->
-                        buildMedicineAnalogsList(medicine, nextMedicineChild);
-                case "versions"->
-                    buildMedicineVersionsList(medicine, nextMedicineChild);
+                case "analogs" -> buildMedicineAnalogsList(medicine, nextMedicineChild);
+                case "versions" -> buildMedicineVersionsList(medicine, nextMedicineChild);
             }
         }
     }
@@ -111,7 +103,6 @@ public class Main {
         }
         medicine.setMedicineVersions(versions);
     }
-
 
     private static void buildMedicineAnalogsList(Medicine medicine, Node nodeAnalogs) {
         List<String> analogs = new ArrayList<>();
@@ -137,7 +128,7 @@ public class Main {
         version.setMedicineDosage(dosageMedicine);
         String certificateMedicine = getTextContentByElement(nodeVersion, "certificate");
         version.setMedicineCertificate(certificateMedicine);
-        String expirationDate = getTextContentByElement(nodeVersion,"expiration_date");
+        String expirationDate = getTextContentByElement(nodeVersion, "expiration_date");
         version.setExpirationDate(YearMonth.parse(expirationDate));
         return version;
     }
@@ -156,23 +147,3 @@ public class Main {
 
     }
 }
-
-//                if (analogNode != null) {
-//                    NodeList analogs = analogNode.getChildNodes();
-//                    for (int j = 0; j < analogs.getLength(); j++) {
-//                        if (analogs.item(j).getNodeType() != Node.ELEMENT_NODE) {
-//                            continue;
-//                        }
-//                        System.out.println("Ребенок Аналогов - " + analogs.item(j).getNodeName());
-//                    }
-//                }
-//
-//                if (versionNode != null) {
-//                    NodeList versions = versionNode.getChildNodes();
-//                    for (int j = 0; j < versions.getLength(); j++) {
-//                        if (versions.item(j).getNodeType() != Node.ELEMENT_NODE) {
-//                            continue;
-//                        }
-//                        System.out.println("Ребенок Версий - " + versions.item(j).getNodeName());
-//                    }
-//                }

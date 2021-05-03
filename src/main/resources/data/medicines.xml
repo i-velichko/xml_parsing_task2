@@ -28,7 +28,7 @@
         </versions>
     </medicine>
 
-    <medicine id="M2">
+    <medicine id="M2" prescription="true">
         <name>Captopril</name>
         <group>Hypotensive</group>
         <analogs>
@@ -294,22 +294,21 @@
                 <pharm>Belmedpreparaty</pharm>
                 <certificate>№: 15/09/97 от 24.09.2014 - Acting</certificate>
                 <package>Pills</package>
-                <dosage>Inside, after eating. The dosage regimen is set individually depending on the indications.</dosage>
+                <dosage>The dosage regimen is set individually depending on the indications.</dosage>
                 <expiration_date>2024-04</expiration_date>
             </version>
             <version>
                 <pharm>Belmedpreparaty</pharm>
                 <certificate>№: 17/01/1274 от 18.08.2015 - Acting</certificate>
                 <package>Salve</package>
-                <dosage>
-                    Outwardly. A strip of gel, ointment or cream 5-10 cm long is applied to the affected area and rubbed thoroughly with light movements until completely absorbed 3-4 times a day for 2-3 weeks.</dosage>
+                <dosage>A strip of gel is applied to the affected area and rubbed thoroughly with light movements.</dosage>
                 <expiration_date>2023-04</expiration_date>
             </version>
         </versions>
 
     </medicine>
 
-    <medicine id="M15">
+    <medicine id="M15" prescription="true">
         <name>Dexamethason</name>
         <group>Hormonal</group>
         <analogs>
@@ -328,7 +327,7 @@
         </versions>
     </medicine>
 
-    <homeopathy id="M16">
+    <homeopathy id="M16" prescription="true">
         <name>Dormikind</name>
         <group>Sedatives</group>
         <analogs>
@@ -346,7 +345,7 @@
         <active_substance>Cypripedium_pubescens</active_substance>
     </homeopathy>
 
-    <vaccine id="M17">
+    <vaccine id="M17" prescription="true">
         <name>bcg_vaccine</name>
         <group>Vaccines</group>
         <analogs>
