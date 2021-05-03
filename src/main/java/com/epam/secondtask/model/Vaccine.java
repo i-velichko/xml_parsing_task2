@@ -7,6 +7,9 @@ import java.util.List;
 public class Vaccine extends Medicine {
     private String bacteria;
 
+    public Vaccine() {
+    }
+
     public Vaccine(String medicineId, String prescription, String medicineName, MedicineGroupType medicineGroup, List<String> analogs, List<Version> medicineVersions) {
         super(medicineId, prescription, medicineName, medicineGroup, analogs, medicineVersions);
     }
@@ -21,8 +24,10 @@ public class Vaccine extends Medicine {
 
     @Override
     public String toString() {
-        return "Vaccine{" +
-                "bacteria='" + bacteria + '\'' +
-                '}';
+        return "Vaccine" +
+                " - " + super.toString() +
+        "bacteria='" + bacteria + '\'';
     }
+
+
 }

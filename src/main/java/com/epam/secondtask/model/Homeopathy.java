@@ -7,6 +7,9 @@ import java.util.List;
 public class Homeopathy extends Medicine {
     private String activeSubstance;
 
+    public Homeopathy() {
+    }
+
     public Homeopathy(String medicineId, String prescription, String medicineName, MedicineGroupType medicineGroup, List<String> analogs, List<Version> medicineVersions) {
         super(medicineId, prescription, medicineName, medicineGroup, analogs, medicineVersions);
     }

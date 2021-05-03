@@ -1,6 +1,8 @@
 package com.epam.secondtask;
 
+import com.epam.secondtask.model.Homeopathy;
 import com.epam.secondtask.model.Medicine;
+import com.epam.secondtask.model.Vaccine;
 import com.epam.secondtask.model.Version;
 import com.epam.secondtask.model.enumeration.MedicineGroupType;
 import com.epam.secondtask.model.enumeration.MedicinePackageType;
@@ -31,28 +33,26 @@ public class Main {
 
         Node rootNodeMedicines = doc.getFirstChild();  //получил корневой medicines
         NodeList medicinesChilds = rootNodeMedicines.getChildNodes(); //Получаю все обьекты Medicine, Vaccine и Homeopathy
-        Node medicineNode = null;
-        Node homeopathyNode = null;
-        Node vaccineNode = null;
 
         for (int i = 0; i < medicinesChilds.getLength(); i++) {
-            Medicine medicine = new Medicine();
-            if (medicinesChilds.item(i).getNodeType() != Node.ELEMENT_NODE) {
+            Medicine medicine = null;
+            Node item = medicinesChilds.item(i);
+            if (item.getNodeType() != Node.ELEMENT_NODE) {
                 continue;
             }
 
-            switch (medicinesChilds.item(i).getNodeName()) {
+            switch (item.getNodeName()) {
                 case "medicine" -> {
-                    medicineNode = medicinesChilds.item(i);
-                    buildMedicine(medicine, medicineNode);
+                    medicine = new Medicine();
+                    buildMedicine(medicine, item);
                 }
                 case "homeopathy" -> {
-                    homeopathyNode = medicinesChilds.item(i);
+                    medicine = new Homeopathy();
                     buildHomeopathy();
                 }
                 case "vaccine" -> {
-                    vaccineNode = medicinesChilds.item(i);
-                    buildVaccine();
+                    medicine = new Vaccine();
+                    buildVaccine(medicine, item);
                 }
             }
             medicines.add(medicine);
@@ -60,7 +60,11 @@ public class Main {
         medicines.forEach(System.out::println);
     }
 
-    private static void buildVaccine() {
+    private static void buildVaccine(Medicine medicine, Node node) {
+        buildMedicine(medicine, node);
+        String bacteriaType = getTextContentByElement(node, "bacterium");
+        ((Vaccine)medicine).setBacteria(bacteriaType);
+
     }
 
     private static void buildHomeopathy() {
