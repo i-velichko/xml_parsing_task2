@@ -1,6 +1,6 @@
 package com.epam.secondtask.builder;
 
-public enum MedicineXmlTagType {
+public enum MedicineXmlTag {
     MEDICINES,
     MEDICINE,
     ID,
@@ -15,7 +15,20 @@ public enum MedicineXmlTagType {
     CERTIFICATE,
     PACKAGE,
     DOSAGE,
-    EXPIRATION_DATE;
+    EXPIRATION_DATE,
+    HOMEOPATHY,
+    VACCINE,
+    ACTIVE_SUBSTANCE,
+    BACTERIA,
+    BACTERIUM;
+
+//    private String value;
+//    MedicineXmlTag(String value) {
+//        this.value = value;
+//    }
+//    public String getValue() {
+//        return value;
+//    }
 
     @Override
     public String toString() {

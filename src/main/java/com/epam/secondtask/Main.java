@@ -1,16 +1,13 @@
 package com.epam.secondtask;
 
-import com.epam.secondtask.builder.MedicinesDomBuilder;
 import com.epam.secondtask.builder.MedicinesSaxBuilder;
-import com.epam.secondtask.model.Medicine;
 
 public class Main {
+    private final static String pathToFile = "src/main/resources/data/medicines.xml";
     public static void main(String[] args) {
 
-        MedicinesSaxBuilder medicinesSaxBuilder = new MedicinesSaxBuilder();
-        Medicine medicine = medicinesSaxBuilder.parse();
-
-
-        System.out.println("Medicine - " + medicine );
+        MedicinesSaxBuilder saxBuilder = new MedicinesSaxBuilder();
+        saxBuilder.buildSetMedicines(pathToFile);
+        System.out.println(saxBuilder.getMedicines());
     }
 }
