@@ -24,8 +24,8 @@ public class Homeopathy extends Medicine {
 
     @Override
     public String toString() {
-        return "Homeopathy{" +
-                "activeSubstance='" + activeSubstance + '\'' +
-                '}';
+        return "Homeopathy" +
+                " - " + super.toString() +
+                "activeSubstance='" + activeSubstance + '\'';
     }
 }

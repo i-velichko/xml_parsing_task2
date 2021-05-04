@@ -13,9 +13,9 @@ public class MedicineBuilderFactory {
             case STAX -> {
                 return new MedicinesStaxBuilder();
             }
-            case SAX -> {
-                return new MedicinesSaxBuilder();
-            }
+//            case SAX -> {
+//                return new MedicinesSaxBuilder();
+//            }
             default -> throw new EnumConstantNotPresentException(
                     type.getDeclaringClass(), type.name());
         }
