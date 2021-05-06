@@ -10,9 +10,9 @@ public class MedicineBuilderFactory {
 //            case DOM -> {
 //                return new MedicinesDomBuilder();
 //            }
-            case STAX -> {
-                return new MedicinesStaxBuilder();
-            }
+//            case STAX -> {
+//                return new MedicinesStaxBuilder();
+//            }
 //            case SAX -> {
 //                return new MedicinesSaxBuilder();
 //            }

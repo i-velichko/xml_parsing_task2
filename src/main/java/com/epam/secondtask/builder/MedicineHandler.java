@@ -9,6 +9,7 @@ import org.xml.sax.helpers.DefaultHandler;
 
 import java.time.YearMonth;
 import java.util.*;
+import java.util.function.Consumer;
 
 public class MedicineHandler extends DefaultHandler { //класс, который будет вызывать парсер
     private static final String ELEMENT_MEDICINE = "medicine";
@@ -28,6 +29,7 @@ public class MedicineHandler extends DefaultHandler { //класс, которы
     public MedicineHandler() {
         medicines = new HashSet<Medicine>();
         withText = EnumSet.range(MedicineXmlTag.NAME, MedicineXmlTag.EXPIRATION_DATE);
+
     }
 
     public Set<Medicine> getMedicines() {
@@ -63,20 +65,12 @@ public class MedicineHandler extends DefaultHandler { //класс, которы
     }
 
     public void endElement(String uri, String localName, String qName) {
-        if (ELEMENT_MEDICINE.equals(qName)) {
-            medicines.add(currentMedicine);
-        }
-        if (ELEMENT_ANALOGS.equals(qName)) {
-            currentMedicine.setAnalogs(analogs);
-        }
-        if (ELEMENT_ANALOG.equals(qName)) {
-            analogs.add(analog);
-        }
-        if (ELEMENT_VERSIONS.equals(qName)) {
-            currentMedicine.setMedicineVersions(versions);
-        }
-        if (ELEMENT_VERSION.equals(qName)) {
-            versions.add(currentVersion);
+        switch (qName) {
+            case ELEMENT_MEDICINE -> medicines.add(currentMedicine);
+            case ELEMENT_ANALOGS -> currentMedicine.setAnalogs(analogs);
+            case ELEMENT_ANALOG -> analogs.add(analog);
+            case ELEMENT_VERSIONS -> currentMedicine.setMedicineVersions(versions);
+            case ELEMENT_VERSION -> versions.add(currentVersion);
         }
     }
 
@@ -86,9 +80,8 @@ public class MedicineHandler extends DefaultHandler { //класс, которы
             switch (currentXmlTag) {
                 case NAME -> currentMedicine.setMedicineName(data);
                 case GROUP -> currentMedicine.setMedicineGroup(MedicineGroupType.valueOf(data.toUpperCase()));
-                case ANALOGS -> System.out.println(" ");
+                case ANALOGS, VERSIONS -> System.out.println(" ");
                 case ANALOG -> analog = data;
-                case VERSIONS -> System.out.println(" ");
                 case VERSION -> System.out.print(" ");
                 case PHARM -> currentVersion.setPharmCompany(data);
                 case CERTIFICATE -> currentVersion.setMedicineCertificate(data);
