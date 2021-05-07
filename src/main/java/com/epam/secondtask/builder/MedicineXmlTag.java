@@ -3,6 +3,8 @@ package com.epam.secondtask.builder;
 public enum MedicineXmlTag {
     MEDICINES,
     MEDICINE,
+    HOMEOPATHY,
+    VACCINE,
     ID,
     PRESCRIPTION,
     NAME,
@@ -16,19 +18,9 @@ public enum MedicineXmlTag {
     PACKAGE,
     DOSAGE,
     EXPIRATION_DATE,
-    HOMEOPATHY,
-    VACCINE,
     ACTIVE_SUBSTANCE,
     BACTERIA,
     BACTERIUM;
-
-//    private String value;
-//    MedicineXmlTag(String value) {
-//        this.value = value;
-//    }
-//    public String getValue() {
-//        return value;
-//    }
 
     @Override
     public String toString() {

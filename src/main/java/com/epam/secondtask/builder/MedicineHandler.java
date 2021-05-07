@@ -1,6 +1,8 @@
 package com.epam.secondtask.builder;
 
+import com.epam.secondtask.model.Homeopathy;
 import com.epam.secondtask.model.Medicine;
+import com.epam.secondtask.model.Vaccine;
 import com.epam.secondtask.model.Version;
 import com.epam.secondtask.model.enumeration.MedicineGroupType;
 import com.epam.secondtask.model.enumeration.MedicinePackageType;
@@ -8,8 +10,9 @@ import org.xml.sax.Attributes;
 import org.xml.sax.helpers.DefaultHandler;
 
 import java.time.YearMonth;
-import java.util.*;
-import java.util.function.Consumer;
+import java.util.ArrayList;
+import java.util.EnumSet;
+import java.util.List;
 
 public class MedicineHandler extends DefaultHandler { //класс, который будет вызывать парсер
     private static final String ELEMENT_MEDICINE = "medicine";
@@ -17,29 +20,33 @@ public class MedicineHandler extends DefaultHandler { //класс, которы
     private static final String ELEMENT_ANALOGS = "analogs";
     private static final String ELEMENT_VERSIONS = "versions";
     private static final String ELEMENT_VERSION = "version";
-    private Set<Medicine> medicines;
+    private static final String ELEMENT_HOMEOPATHY = "homeopathy";
+    private static final String ELEMENT_VACCINE = "vaccine";
+    private final List<MedicineXmlTag> anyMedicineTagList = List.of(MedicineXmlTag.MEDICINE, MedicineXmlTag.VACCINE, MedicineXmlTag.HOMEOPATHY);
+    private final List<Medicine> medicines;
     private Medicine currentMedicine;
     private Version currentVersion;
     private MedicineXmlTag currentXmlTag;
-    private EnumSet<MedicineXmlTag> withText;
+    private final EnumSet<MedicineXmlTag> withText;
     private List<String> analogs;
     private List<Version> versions;
     private String analog;
 
     public MedicineHandler() {
-        medicines = new HashSet<Medicine>();
-        withText = EnumSet.range(MedicineXmlTag.NAME, MedicineXmlTag.EXPIRATION_DATE);
-
+        medicines = new ArrayList<>();
+        withText = EnumSet.range(MedicineXmlTag.NAME, MedicineXmlTag.BACTERIUM);
     }
 
-    public Set<Medicine> getMedicines() {
+    public List<Medicine> getMedicines() {
         return medicines;
     }
 
     public void startElement(String uri, String localName, String qName, Attributes attrs) {
-        if (ELEMENT_MEDICINE.equals(qName)) {
-            currentMedicine = new Medicine();
+        if (anyMedicineTagList.contains(MedicineXmlTag.valueOf(qName.toUpperCase()))) {
+
+            currentMedicine = createSpecificMedicine(qName);
             currentMedicine.setMedicineId(attrs.getValue(0));
+
             if (attrs.getLength() == 2) {
                 currentMedicine.setPrescription(attrs.getValue(1));
             }
@@ -64,9 +71,18 @@ public class MedicineHandler extends DefaultHandler { //класс, которы
 
     }
 
+    private Medicine createSpecificMedicine(String qName) {
+        switch (qName){
+            case ELEMENT_MEDICINE: return new Medicine();
+            case ELEMENT_HOMEOPATHY: return new Homeopathy();
+            case ELEMENT_VACCINE: return new Vaccine();
+        }
+        throw new RuntimeException(); //todo mine exception
+    }
+
     public void endElement(String uri, String localName, String qName) {
         switch (qName) {
-            case ELEMENT_MEDICINE -> medicines.add(currentMedicine);
+            case ELEMENT_MEDICINE, ELEMENT_HOMEOPATHY, ELEMENT_VACCINE -> medicines.add(currentMedicine);
             case ELEMENT_ANALOGS -> currentMedicine.setAnalogs(analogs);
             case ELEMENT_ANALOG -> analogs.add(analog);
             case ELEMENT_VERSIONS -> currentMedicine.setMedicineVersions(versions);
@@ -87,6 +103,8 @@ public class MedicineHandler extends DefaultHandler { //класс, которы
                 case CERTIFICATE -> currentVersion.setMedicineCertificate(data);
                 case PACKAGE -> currentVersion.setMedicinePackage(MedicinePackageType.valueOf(data.toUpperCase()));
                 case DOSAGE -> currentVersion.setMedicineDosage(data);
+                case ACTIVE_SUBSTANCE -> ((Homeopathy)currentMedicine).setActiveSubstance(data);
+                case BACTERIUM -> ((Vaccine)currentMedicine).setBacteria(data);
                 case EXPIRATION_DATE -> currentVersion.setExpirationDate(YearMonth.parse(data));
                 default -> throw new EnumConstantNotPresentException(
                         currentXmlTag.getDeclaringClass(), currentXmlTag.name());

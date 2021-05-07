@@ -44,7 +44,7 @@ public class MedicinesStaxBuilder {
     public void buildListMedicines(String filename) {
         XMLStreamReader reader;
         String name;
-        try (FileInputStream inputStream = new FileInputStream(new File(filename))) {
+        try (FileInputStream inputStream = new FileInputStream(filename)) {
             reader = inputFactory.createXMLStreamReader(inputStream);
 // StAX parsing
             while (reader.hasNext()) {
@@ -52,9 +52,9 @@ public class MedicinesStaxBuilder {
                 if (type == XMLStreamConstants.START_ELEMENT) {
                     name = reader.getLocalName();
                     switch (MedicineXmlTag.valueOf(name.toUpperCase())) {
-                        case MEDICINE -> medicines.add(buildAnyMedicine(reader, Medicine.class));
-                        case VACCINE -> medicines.add(buildAnyMedicine(reader, Vaccine.class));
-                        case HOMEOPATHY -> medicines.add(buildAnyMedicine(reader, Homeopathy.class));
+                        case MEDICINE -> medicines.add(buildAnyMedicine(reader, new Medicine()));
+                        case VACCINE -> medicines.add(buildAnyMedicine(reader, new Vaccine()));
+                        case HOMEOPATHY -> medicines.add(buildAnyMedicine(reader, new Homeopathy()));
                     }
                 }
             }
@@ -63,8 +63,8 @@ public class MedicinesStaxBuilder {
         }
     }
 
-    private Medicine buildAnyMedicine(XMLStreamReader reader, Class<?> medicineClass) throws XMLStreamException, InstantiationException, IllegalAccessException {
-        Medicine medicine = (Medicine) medicineClass.newInstance();
+    private Medicine buildAnyMedicine(XMLStreamReader reader, Medicine medicine) throws XMLStreamException, InstantiationException, IllegalAccessException {
+
         medicine.setMedicineId(reader.getAttributeValue(null, MedicineXmlTag.ID.toString()));
         // null check
         medicine.setPrescription(reader.getAttributeValue(null,

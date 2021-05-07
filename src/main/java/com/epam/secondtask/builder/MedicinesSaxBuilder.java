@@ -8,11 +8,12 @@ import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import java.io.IOException;
-import java.util.Set;
+import java.util.List;
+
 
 public class MedicinesSaxBuilder {
     private final static String pathToFile = "src/main/resources/data/medicines.xml";
-    private Set<Medicine> medicines;
+    private List<Medicine> medicines;
     private MedicineHandler handler = new MedicineHandler();
     private XMLReader reader;
 
@@ -28,11 +29,11 @@ public class MedicinesSaxBuilder {
         reader.setContentHandler(handler);
     }
 
-    public Set<Medicine> getMedicines() {
+    public List<Medicine> getMedicines() {
         return medicines;
     }
 
-    public void buildSetMedicines(String pathToFile) {
+    public void buildListMedicines(String pathToFile) {
         try {
             reader.parse(pathToFile);
         } catch (IOException | SAXException e) {
