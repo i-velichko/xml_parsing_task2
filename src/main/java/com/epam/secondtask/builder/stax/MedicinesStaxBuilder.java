@@ -1,24 +1,25 @@
-package com.epam.secondtask.builder;
+package com.epam.secondtask.builder.stax;
 
+import com.epam.secondtask.builder.common.AbstractMedicinesBuilder;
 import com.epam.secondtask.model.Homeopathy;
 import com.epam.secondtask.model.Medicine;
 import com.epam.secondtask.model.Vaccine;
 import com.epam.secondtask.model.Version;
-import com.epam.secondtask.model.enumeration.MedicineGroupType;
-import com.epam.secondtask.model.enumeration.MedicinePackageType;
+import com.epam.secondtask.builder.type.MedicineGroupType;
+import com.epam.secondtask.builder.type.MedicinePackageType;
+import com.epam.secondtask.builder.type.MedicineXmlTag;
 
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamConstants;
 import javax.xml.stream.XMLStreamException;
 import javax.xml.stream.XMLStreamReader;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.time.YearMonth;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MedicinesStaxBuilder {
+public class MedicinesStaxBuilder extends AbstractMedicinesBuilder {
     private List<Medicine> medicines;
     private XMLInputFactory inputFactory;
     private List<MedicineXmlTag> anyMedicineTagList = List.of(MedicineXmlTag.MEDICINE, MedicineXmlTag.VACCINE, MedicineXmlTag.HOMEOPATHY);
@@ -41,12 +42,12 @@ public class MedicinesStaxBuilder {
         return medicines;
     }
 
+    @Override
     public void buildListMedicines(String filename) {
         XMLStreamReader reader;
         String name;
         try (FileInputStream inputStream = new FileInputStream(filename)) {
             reader = inputFactory.createXMLStreamReader(inputStream);
-// StAX parsing
             while (reader.hasNext()) {
                 int type = reader.next();
                 if (type == XMLStreamConstants.START_ELEMENT) {
@@ -73,7 +74,7 @@ public class MedicinesStaxBuilder {
         while (reader.hasNext()) {
             int type = reader.next();
             switch (type) {
-                case XMLStreamConstants.START_ELEMENT:
+                case XMLStreamConstants.START_ELEMENT -> {
                     name = reader.getLocalName();
                     switch (MedicineXmlTag.valueOf(name.toUpperCase())) {
                         case NAME -> medicine.setMedicineName(getXMLText(reader));
@@ -83,12 +84,13 @@ public class MedicinesStaxBuilder {
                         case ANALOGS -> medicine.setAnalogs(getListAnalogs(reader));
                         case VERSIONS -> medicine.setMedicineVersions(getListVersions(reader));
                     }
-                    break;
-                case XMLStreamConstants.END_ELEMENT:
+                }
+                case XMLStreamConstants.END_ELEMENT -> {
                     name = reader.getLocalName();
                     if (anyMedicineTagList.contains(MedicineXmlTag.valueOf(name.toUpperCase()))) {
                         return medicine;
                     }
+                }
             }
         }
         throw new XMLStreamException("Unknown element in tag <medicine>");

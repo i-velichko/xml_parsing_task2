@@ -1,4 +1,4 @@
-package com.epam.secondtask.builder;
+package com.epam.secondtask.builder.type;
 
 public enum MedicineXmlTag {
     MEDICINES,
@@ -19,7 +19,6 @@ public enum MedicineXmlTag {
     DOSAGE,
     EXPIRATION_DATE,
     ACTIVE_SUBSTANCE,
-    BACTERIA,
     BACTERIUM;
 
     @Override

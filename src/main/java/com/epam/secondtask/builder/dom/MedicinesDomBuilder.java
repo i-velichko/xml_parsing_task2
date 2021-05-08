@@ -1,32 +1,27 @@
-package com.epam.secondtask.builder;
+package com.epam.secondtask.builder.dom;
 
+import com.epam.secondtask.builder.common.AbstractMedicinesBuilder;
 import com.epam.secondtask.model.Homeopathy;
 import com.epam.secondtask.model.Medicine;
 import com.epam.secondtask.model.Vaccine;
 import com.epam.secondtask.model.Version;
-import com.epam.secondtask.model.enumeration.MedicineGroupType;
-import com.epam.secondtask.model.enumeration.MedicinePackageType;
+import com.epam.secondtask.builder.type.MedicineGroupType;
+import com.epam.secondtask.builder.type.MedicinePackageType;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
 
-import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
 import java.io.File;
-import java.io.IOException;
 import java.time.YearMonth;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
-public class MedicinesDomBuilder {
+public class MedicinesDomBuilder extends AbstractMedicinesBuilder {
     private final static String pathToFile = "src/main/resources/data/medicines.xml";
-    public void buildSetMedicines() {
 
+    public void buildListMedicines(String pathToFile) {
         List<Medicine> medicines = new ArrayList<>();
         Document doc;
         try {

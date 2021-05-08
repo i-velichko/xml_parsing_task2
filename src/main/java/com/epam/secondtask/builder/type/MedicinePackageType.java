@@ -1,4 +1,4 @@
-package com.epam.secondtask.model.enumeration;
+package com.epam.secondtask.builder.type;
 
 public enum MedicinePackageType {
     PILLS,

@@ -1,6 +1,6 @@
 package com.epam.secondtask.model;
 
-import com.epam.secondtask.model.enumeration.MedicineGroupType;
+import com.epam.secondtask.builder.type.MedicineGroupType;
 
 import java.util.List;
 

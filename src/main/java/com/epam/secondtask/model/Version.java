@@ -1,6 +1,6 @@
 package com.epam.secondtask.model;
 
-import com.epam.secondtask.model.enumeration.MedicinePackageType;
+import com.epam.secondtask.builder.type.MedicinePackageType;
 
 import java.time.YearMonth;
 
