@@ -1,7 +1,7 @@
 package com.epam.secondtask.builder.sax;
 
-import com.epam.secondtask.builder.type.MedicineGroupType;
-import com.epam.secondtask.builder.type.MedicinePackageType;
+import com.epam.secondtask.model.type.MedicineGroupType;
+import com.epam.secondtask.model.type.MedicinePackageType;
 import com.epam.secondtask.builder.type.MedicineXmlTag;
 import com.epam.secondtask.model.Homeopathy;
 import com.epam.secondtask.model.Medicine;

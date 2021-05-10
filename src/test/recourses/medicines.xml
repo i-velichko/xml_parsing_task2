@@ -1,0 +1,366 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<medicines xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.example.com/medicines"
+        xsi:schemaLocation="http://www.example.com/medicines medicine.xsd">
+    <medicine id="M1" prescription="false">
+        <name>Magne B6</name>
+        <group>Vitamins</group>
+        <analogs>
+            <analog>Magnelek</analog>
+            <analog>Magvit</analog>
+            <analog>Magnetab</analog>
+        </analogs>
+        <versions>
+            <version>
+                <pharm>Sanofi</pharm>
+                <certificate>№: 10476/16 от 27.04.2016 - Acting</certificate>
+                <package>Pills</package>
+                <dosage>2 tablets, 3 times a day</dosage>
+                <expiration_date>2023-04</expiration_date>
+            </version>
+            <version>
+                <pharm>Sanofi</pharm>
+                <certificate>№: 9120/09/14/17 от 02.12.2014 - Acting</certificate>
+                <package>Solute</package>
+                <dosage>3-4 ampoules per day, divided into 2-3 doses with meals.</dosage>
+                <expiration_date>2023-04</expiration_date>
+            </version>
+        </versions>
+    </medicine>
+
+    <medicine id="M2" prescription="true">
+        <name>Captopril</name>
+        <group>Hypotensive</group>
+        <analogs>
+            <analog>Blocordil</analog>
+        </analogs>
+        <versions>
+            <version>
+                <pharm>Pharmland</pharm>
+                <certificate>№: 17/12/2039 от 27.12.2017 - Acting</certificate>
+                <package>Pills</package>
+                <dosage>on the recommendation of a doctor</dosage>
+                <expiration_date>2023-04</expiration_date>
+            </version>
+        </versions>
+    </medicine>
+
+    <medicine id="M3" prescription="false">
+        <name>Bisoprolol</name>
+        <group>Hypotensive</group>
+        <analogs>
+            <analog>Concor</analog>
+            <analog>Bicard-lf</analog>
+        </analogs>
+        <versions>
+            <version>
+                <pharm>Pharmtechnology</pharm>
+                <certificate>№: 16/05/1900 от 17.05.2016 - Acting</certificate>
+                <package>Pills</package>
+                <dosage>on the recommendation of a doctor</dosage>
+                <expiration_date>2023-04</expiration_date>
+            </version>
+            <version>
+                <pharm>Minskinterkas</pharm>
+                <certificate>№: 14/08/2269 от 28.08.2014 - Acting</certificate>
+                <package>Capsules</package>
+                <dosage>on the recommendation of a doctor</dosage>
+                <expiration_date>2023-04</expiration_date>
+            </version>
+        </versions>
+    </medicine>
+
+    <medicine id="M4" prescription="false">
+        <name>Devit 50000</name>
+        <group>Vitamins</group>
+        <analogs>
+            <analog>Akva D3</analog>
+            <analog>Akvadetrim</analog>
+            <analog>Ultra-D</analog>
+        </analogs>
+        <versions>
+            <version>
+                <pharm>Lamyra_LPP</pharm>
+                <certificate>№: 10436/15/16 от 03.12.2015 - Acting</certificate>
+                <package>Pills</package>
+                <dosage>1 tablet for 7 weeks</dosage>
+                <expiration_date>2024-04</expiration_date>
+            </version>
+        </versions>
+    </medicine>
+
+    <medicine id="M5" prescription="false">
+        <name>Cardiomagnyl</name>
+        <group>Cardio</group>
+        <analogs>
+            <analog>Akard</analog>
+            <analog>Ask</analog>
+            <analog>Aspikard</analog>
+        </analogs>
+        <versions>
+            <version>
+                <pharm>Nycomed</pharm>
+                <certificate>№: 2192/96/02/07/12 от 07.09.2012 - Acting</certificate>
+                <package>Pills</package>
+                <dosage>on the recommendation of a doctor</dosage>
+                <expiration_date>2026-04</expiration_date>
+            </version>
+        </versions>
+    </medicine>
+
+    <medicine id="M6" prescription="false">
+        <name>Nimesulide</name>
+        <group>Pain_relievers</group>
+        <analogs>
+            <analog>Nimesil</analog>
+            <analog>Nisulide</analog>
+            <analog>Nize</analog>
+        </analogs>
+        <versions>
+            <version>
+                <pharm>Pharmland</pharm>
+                <certificate>№: 19/06/2226 от 05.06.2019 - Acting</certificate>
+                <package>Pills</package>
+                <dosage>Inside for adults, 100-200 mg 2 times / day, for children - 1.5 mg / kg 2-3 times / day.</dosage>
+                <expiration_date>2023-04</expiration_date>
+            </version>
+        </versions>
+    </medicine>
+
+    <medicine id="M7" prescription="false">
+        <name>Ketanov</name>
+        <group>Pain_relievers</group>
+        <analogs>
+            <analog>Dolaren</analog>
+        </analogs>
+        <versions>
+            <version>
+                <pharm>Terapia</pharm>
+                <certificate>№: 695/95/2000/05/10/15 от 03.12.2015 - Acting</certificate>
+                <package>Pills</package>
+                <dosage>Ketanov is recommended for short-term use (up to 5 days).</dosage>
+                <expiration_date>2024-04</expiration_date>
+            </version>
+            <version>
+                <pharm>Ranbaxy_Labaratories</pharm>
+                <certificate>№: 9304/95/2000/05/10 от 01.06.2010 - Expired</certificate>
+                <package>Solute</package>
+                <dosage>Adults and children over 16 years of age are prescribed 10 mg (1 tab.)</dosage>
+                <expiration_date>2023-04</expiration_date>
+            </version>
+        </versions>
+    </medicine>
+
+    <medicine id="M8" prescription="false">
+        <name>Paracetamol</name>
+        <group>Antipyretic</group>
+        <analogs>
+            <analog>Angrycold</analog>
+            <analog>Dolaren</analog>
+        </analogs>
+        <versions>
+            <version>
+                <pharm>Borisov_plant_of_medical_preparetions</pharm>
+                <certificate>№: 16/04/280 от 28.04.2016 - Acting</certificate>
+                <package>Pills</package>
+                <dosage>Frequency rate of application - 4 times / day with an interval of at least 4 hours. The maximum duration of treatment is 3 days.</dosage>
+                <expiration_date>2024-04</expiration_date>
+            </version>
+            <version>
+                <pharm>Monpfarm</pharm>
+                <certificate>№: 3188/98/03/08/12/13/17 от 30.11.2017 - Expired</certificate>
+                <package>Suppository</package>
+                <dosage>Single doses for oral administration for children aged 6-12 years - 250-500 mg, 1-5 years - 120-250 mg, from 3 months to 1 year - 60-120 mg, up to 3 months - 10 mg / kg. Single doses for rectal administration in children aged 6-12 years - 250-500 mg, 1-5 years - 125-250 mg.</dosage>
+                <expiration_date>2023-04</expiration_date>
+            </version>
+        </versions>
+    </medicine>
+
+    <medicine id="M9" prescription="false">
+        <name>Amoxicillin</name>
+        <group>Antibiotics</group>
+        <analogs>
+            <analog>Ospamox</analog>
+            <analog>Amoxil</analog>
+            <analog>Xykoncyl</analog>
+            <analog>Amocyn</analog>
+        </analogs>
+        <versions>
+            <version>
+                <pharm>Pharmland</pharm>
+                <certificate>12/08/1226 от 01.03.2010 - Expired</certificate>
+                <package>Capsules</package>
+                <dosage>Adults are prescribed 500 mg 3 times / day. In severe disease - 1 g 3 times / day</dosage>
+                <expiration_date>2024-04</expiration_date>
+            </version>
+            <version>
+                <pharm>Pharmtechnology</pharm>
+                <certificate>№: 17/03/2000 от 22.03.2017 - Acting</certificate>
+                <package>Pills</package>
+                <dosage>Individual. on the recommendation of a doctor</dosage>
+                <expiration_date>2024-04</expiration_date>
+            </version>
+        </versions>
+    </medicine>
+
+    <medicine id="M10" prescription="false">
+        <name>Azithromycin</name>
+        <group>Antibiotics</group>
+        <analogs>
+            <analog>Sumalek</analog>
+            <analog>Ziromyn</analog>
+            <analog>Zitmak</analog>
+            <analog>Azibiot</analog>
+        </analogs>
+        <versions>
+            <version>
+                <pharm>Pharmland</pharm>
+                <certificate>№: 16/11/2204 от 25.03.2014 - Acting</certificate>
+                <package>Pills</package>
+                <dosage>The tablets are taken orally, 1 time / day, without chewing, an hour before meals or 2 hours after meals, because food affects the absorption of the drug</dosage>
+                <expiration_date>2023-04</expiration_date>
+            </version>
+            <version>
+                <pharm>Borisov_plant_of_medical_preparetions</pharm>
+                <certificate>№: 16/08/1108 от 02.08.2016 - Acting</certificate>
+                <package>Capsules</package>
+                <dosage>The drug is administered orally, 1 hour before or 2 hours after a meal, 1 time / day.</dosage>
+                <expiration_date>2023-04</expiration_date>
+            </version>
+        </versions>
+    </medicine>
+
+    <medicine id="M11" prescription="false">
+        <name>Septotsid</name>
+        <group>Antiseptic</group>
+        <analogs>
+            <analog>non</analog>
+        </analogs>
+        <versions>
+            <version>
+                <pharm>Belaseptika</pharm>
+                <certificate>№: 15/11/838 от 03.04.2014 - Acting</certificate>
+                <package>Solute</package>
+                <dosage>It is used depending on the indications and dosage form.</dosage>
+                <expiration_date>2025-04</expiration_date>
+            </version>
+        </versions>
+    </medicine>
+
+    <medicine id="M12" prescription="false">
+        <name>Spirt_etilovy 70%</name>
+        <group>Antiseptic</group>
+        <analogs>
+            <analog>non</analog>
+        </analogs>
+        <versions>
+            <version>
+                <pharm>Belmedpreparaty</pharm>
+                <certificate>№: 15/11/1788 от 10.11.2015 - Acting</certificate>
+                <package>Solute</package>
+                <dosage>It is used depending on the indications and dosage form.</dosage>
+                <expiration_date>2025-04</expiration_date>
+            </version>
+        </versions>
+    </medicine>
+
+    <medicine id="M13" prescription="false">
+        <name>Kapsikam</name>
+        <group>Pain_relievers</group>
+        <analogs>
+            <analog>non</analog>
+        </analogs>
+        <versions>
+            <version>
+                <pharm>Grindex</pharm>
+                <certificate>№: 10234/14/16 от 24.04.2014 - Acting</certificate>
+                <package>Salve</package>
+                <dosage>It is used depending on the indications and dosage form.</dosage>
+                <expiration_date>2023-04</expiration_date>
+            </version>
+        </versions>
+    </medicine>
+
+    <medicine id="M14" prescription="false">
+        <name>Ibuprofen</name>
+        <group>Antipyretic</group>
+        <analogs>
+            <analog>Faspik</analog>
+            <analog>Suprafen</analog>
+            <analog>Ibufen</analog>
+        </analogs>
+        <versions>
+            <version>
+                <pharm>Belmedpreparaty</pharm>
+                <certificate>№: 15/09/97 от 24.09.2014 - Acting</certificate>
+                <package>Pills</package>
+                <dosage>The dosage regimen is set individually depending on the indications.</dosage>
+                <expiration_date>2024-04</expiration_date>
+            </version>
+            <version>
+                <pharm>Belmedpreparaty</pharm>
+                <certificate>№: 17/01/1274 от 18.08.2015 - Acting</certificate>
+                <package>Salve</package>
+                <dosage>A strip of gel is applied to the affected area and rubbed thoroughly with light movements.</dosage>
+                <expiration_date>2023-04</expiration_date>
+            </version>
+        </versions>
+
+    </medicine>
+
+    <medicine id="M15" prescription="true">
+        <name>Dexamethason</name>
+        <group>Hormonal</group>
+        <analogs>
+            <analog>Oftan</analog>
+            <analog>Maxidex</analog>
+            <analog>Dexaven</analog>
+        </analogs>
+        <versions>
+            <version>
+                <pharm>KRKA</pharm>
+                <certificate>№: 9266/94/2000/05/10/15 от 14.04.2015 - Acting</certificate>
+                <package>Pills</package>
+                <dosage>The dose is set individually depending on the disease.</dosage>
+                <expiration_date>2026-04</expiration_date>
+            </version>
+        </versions>
+    </medicine>
+
+    <homeopathy id="M16" prescription="true">
+        <name>Dormikind</name>
+        <group>Sedatives</group>
+        <analogs>
+            <analog>not</analog>
+        </analogs>
+        <versions>
+            <version>
+                <pharm>Alpenpharma</pharm>
+                <certificate>№: 9943/12/17 от 26.05.2017</certificate>
+                <package>Pills</package>
+                <dosage>The duration of the use of the medicinal product is determined by the doctor.</dosage>
+                <expiration_date>2023-01</expiration_date>
+            </version>
+        </versions>
+        <active_substance>Cypripedium_pubescens</active_substance>
+    </homeopathy>
+
+    <vaccine id="M17" prescription="true">
+        <name>bcg_vaccine</name>
+        <group>Vaccines</group>
+        <analogs>
+            <analog>not</analog>
+        </analogs>
+        <versions>
+            <version>
+                <pharm>USP</pharm>
+                <certificate>№: 695/95/2000/05/10/15 от 03.12.2015 - Acting</certificate>
+                <package>Ampules</package>
+                <dosage>The vaccine is administered strictly intradermally in accordance with the accepted vaccination schedule.</dosage>
+                <expiration_date>2022-04</expiration_date>
+            </version>
+        </versions>
+        <bacterium>tuberculosis</bacterium>
+    </vaccine>
+
+</medicines>

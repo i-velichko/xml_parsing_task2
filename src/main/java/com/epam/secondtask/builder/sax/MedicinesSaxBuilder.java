@@ -1,6 +1,6 @@
 package com.epam.secondtask.builder.sax;
 
-import com.epam.secondtask.builder.common.AbstractMedicinesBuilder;
+import com.epam.secondtask.builder.AbstractMedicinesBuilder;
 import com.epam.secondtask.model.Medicine;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;

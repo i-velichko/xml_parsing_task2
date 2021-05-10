@@ -1,19 +1,23 @@
-package com.epam.secondtask.builder.common;
+package com.epam.secondtask.builder;
 
 import com.epam.secondtask.builder.dom.MedicinesDomBuilder;
 import com.epam.secondtask.builder.sax.MedicinesSaxBuilder;
 import com.epam.secondtask.builder.stax.MedicinesStaxBuilder;
+import com.epam.secondtask.exception.MedicineXmlException;
 
 public class MedicineBuilderFactory {
     private enum TypeParser {
         SAX, STAX, DOM
     }
 
-    private MedicineBuilderFactory() {
-    }
+    public AbstractMedicinesBuilder createMedicineBuilder(String typeParser) throws MedicineXmlException {
+        TypeParser type;
+        try {
+            type = TypeParser.valueOf(typeParser.toUpperCase());//todo logs
+        }catch (IllegalArgumentException e){
+            throw new MedicineXmlException();
+        }
 
-    public static AbstractMedicinesBuilder createMedicineBuilder(String typeParser) {
-        TypeParser type = TypeParser.valueOf(typeParser.toUpperCase());
         switch (type) {
             case DOM -> {
                 return new MedicinesDomBuilder();

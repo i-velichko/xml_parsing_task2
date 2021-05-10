@@ -1,4 +1,4 @@
-package com.epam.secondtask.builder.common;
+package com.epam.secondtask.builder;
 
 import com.epam.secondtask.model.Medicine;
 

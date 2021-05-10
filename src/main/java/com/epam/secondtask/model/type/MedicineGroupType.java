@@ -1,4 +1,4 @@
-package com.epam.secondtask.builder.type;
+package com.epam.secondtask.model.type;
 
 public enum MedicineGroupType {
     VITAMINS,

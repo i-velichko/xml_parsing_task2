@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        targetNamespace="http://www.example.com/medicines"
+        xmlns:tns="http://www.example.com/medicines"
+        elementFormDefault="qualified">
+    <element name="medicines">
+        <complexType>
+            <sequence>
+                <element name="medicine" type="tns:medicine" maxOccurs="unbounded" />
+                <element name="homeopathy" type="tns:homeopathy" maxOccurs="unbounded" />
+                <element name="vaccine" type="tns:vaccine" minOccurs="0" maxOccurs="unbounded" />
+            </sequence>
+        </complexType>
+    </element>
+
+    <complexType name="medicine">
+        <sequence>
+            <element name="name" type="string"/>
+            <element name="group" type="tns:group"/>
+            <element name="analogs">
+                <complexType>
+                    <sequence>
+                        <element name="analog" type="string" minOccurs="1" maxOccurs="unbounded"/>
+                    </sequence>
+                </complexType>
+            </element>
+            <element name="versions" type="tns:versions"/>
+        </sequence>
+        <attribute name="id" type="tns:medicineID" use="required" />
+        <attribute name="prescription" type="string" use="optional" default="true"/>
+    </complexType>
+
+    <complexType name="homeopathy">
+        <complexContent>
+            <extension base="tns:medicine">
+                <sequence>
+                    <element name="active_substance" type="string"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+
+    <simpleType name="medicineID">
+        <restriction base="ID">
+            <pattern value="\w{1,20}" />
+        </restriction>
+    </simpleType>
+
+    <complexType name="versions">
+        <sequence>
+            <element name="version" type="tns:version" minOccurs="1" maxOccurs="unbounded"/>
+        </sequence>
+    </complexType>
+
+    <complexType name="version">
+        <sequence>
+            <element name="pharm" type="string"/>
+            <element name="certificate" type="string"/>
+            <element name="package" type="tns:package"/>
+            <element name="dosage" type="string"/>
+            <element name="expiration_date" type="gYearMonth"/>
+        </sequence>
+    </complexType>
+
+    <complexType name="vaccine">
+        <complexContent>
+            <extension base="tns:medicine">
+                <sequence>
+                    <element name="bacterium" type="string"/>
+                </sequence>
+            </extension>
+        </complexContent>
+    </complexType>
+
+    <simpleType name="package">
+        <restriction base="string">
+            <enumeration value="Pills"/>
+            <enumeration value="Solute"/>
+            <enumeration value="Suppository"/>
+            <enumeration value="Drops"/>
+            <enumeration value="Ampules"/>
+            <enumeration value="Salve"/>
+            <enumeration value="Powder"/>
+            <enumeration value="Capsules"/>
+        </restriction>
+    </simpleType>
+
+    <simpleType name="group">
+        <restriction base="string">
+            <enumeration value="Vitamins"/>
+            <enumeration value="Cardio"/>
+            <enumeration value="Antibiotics"/>
+            <enumeration value="Pain_relievers"/>
+            <enumeration value="Hormonal"/>
+            <enumeration value="Antipyretic"/>
+            <enumeration value="Antiseptic"/>
+            <enumeration value="Hypotensive"/>
+            <enumeration value="Sedatives"/>
+            <enumeration value="Vaccines"/>
+        </restriction>
+    </simpleType>
+
+</schema>

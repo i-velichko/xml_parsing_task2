@@ -1,6 +1,6 @@
 package com.epam.secondtask.model;
 
-import com.epam.secondtask.builder.type.MedicinePackageType;
+import com.epam.secondtask.model.type.MedicinePackageType;
 
 import java.time.YearMonth;
 
@@ -60,6 +60,33 @@ public class Version {
 
     public void setExpirationDate(YearMonth expirationDate) {
         this.expirationDate = expirationDate;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Version version = (Version) o;
+
+        if (getPharmCompany() != null ? !getPharmCompany().equals(version.getPharmCompany()) : version.getPharmCompany() != null)
+            return false;
+        if (getMedicineCertificate() != null ? !getMedicineCertificate().equals(version.getMedicineCertificate()) : version.getMedicineCertificate() != null)
+            return false;
+        if (getMedicinePackage() != version.getMedicinePackage()) return false;
+        if (getMedicineDosage() != null ? !getMedicineDosage().equals(version.getMedicineDosage()) : version.getMedicineDosage() != null)
+            return false;
+        return getExpirationDate() != null ? getExpirationDate().equals(version.getExpirationDate()) : version.getExpirationDate() == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getPharmCompany() != null ? getPharmCompany().hashCode() : 0;
+        result = 31 * result + (getMedicineCertificate() != null ? getMedicineCertificate().hashCode() : 0);
+        result = 31 * result + (getMedicinePackage() != null ? getMedicinePackage().hashCode() : 0);
+        result = 31 * result + (getMedicineDosage() != null ? getMedicineDosage().hashCode() : 0);
+        result = 31 * result + (getExpirationDate() != null ? getExpirationDate().hashCode() : 0);
+        return result;
     }
 
     @Override

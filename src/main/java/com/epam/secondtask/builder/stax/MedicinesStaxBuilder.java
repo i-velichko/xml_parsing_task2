@@ -1,12 +1,12 @@
 package com.epam.secondtask.builder.stax;
 
-import com.epam.secondtask.builder.common.AbstractMedicinesBuilder;
+import com.epam.secondtask.builder.AbstractMedicinesBuilder;
 import com.epam.secondtask.model.Homeopathy;
 import com.epam.secondtask.model.Medicine;
 import com.epam.secondtask.model.Vaccine;
 import com.epam.secondtask.model.Version;
-import com.epam.secondtask.builder.type.MedicineGroupType;
-import com.epam.secondtask.builder.type.MedicinePackageType;
+import com.epam.secondtask.model.type.MedicineGroupType;
+import com.epam.secondtask.model.type.MedicinePackageType;
 import com.epam.secondtask.builder.type.MedicineXmlTag;
 
 import javax.xml.stream.XMLInputFactory;

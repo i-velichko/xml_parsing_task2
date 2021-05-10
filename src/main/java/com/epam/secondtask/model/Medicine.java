@@ -1,6 +1,6 @@
 package com.epam.secondtask.model;
 
-import com.epam.secondtask.builder.type.MedicineGroupType;
+import com.epam.secondtask.model.type.MedicineGroupType;
 
 import java.util.List;
 
@@ -78,6 +78,36 @@ public class Medicine {
     }
 
     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Medicine medicine = (Medicine) o;
+
+        if (getMedicineId() != null ? !getMedicineId().equals(medicine.getMedicineId()) : medicine.getMedicineId() != null)
+            return false;
+        if (prescription != null ? !medicine.prescription.equals(prescription) : medicine.prescription != null)
+            return false;
+        if (getMedicineName() != null ? !getMedicineName().equals(medicine.getMedicineName()) : medicine.getMedicineName() != null)
+            return false;
+        if (getMedicineGroup() != medicine.getMedicineGroup()) return false;
+        if (getAnalogs() != null ? !getAnalogs().equals(medicine.getAnalogs()) : medicine.getAnalogs() != null)
+            return false;
+        return getMedicineVersions() != null ? getMedicineVersions().equals(medicine.getMedicineVersions()) : medicine.getMedicineVersions() == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getMedicineId() != null ? getMedicineId().hashCode() : 0;
+        result = 31 * result + (prescription != null ? prescription.hashCode() : 0);
+        result = 31 * result + (getMedicineName() != null ? getMedicineName().hashCode() : 0);
+        result = 31 * result + (getMedicineGroup() != null ? getMedicineGroup().hashCode() : 0);
+        result = 31 * result + (getAnalogs() != null ? getAnalogs().hashCode() : 0);
+        result = 31 * result + (getMedicineVersions() != null ? getMedicineVersions().hashCode() : 0);
+        return result;
+    }
+
+    @Override
     public String toString() {
         return "Medicine{" +
                 "medicineId='" + medicineId + '\'' +
@@ -88,4 +118,5 @@ public class Medicine {
                 ", medicineVersions=" + medicineVersions +
                 '}';
     }
+
 }
