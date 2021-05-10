@@ -1,11 +1,10 @@
 package com.epam.secondtask.builder;
 
+import com.epam.secondtask.exception.MedicineXmlException;
 import com.epam.secondtask.model.Medicine;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public abstract class AbstractMedicinesBuilder {
     protected List<Medicine> medicines;
@@ -22,6 +21,6 @@ public abstract class AbstractMedicinesBuilder {
         return medicines;
     }
 
-    public abstract void buildListMedicines(String pathToFile);
+    public abstract void buildListMedicines(String pathToFile) throws MedicineXmlException;
 
 }

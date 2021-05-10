@@ -69,13 +69,18 @@ public class Version {
 
         Version version = (Version) o;
 
-        if (getPharmCompany() != null ? !getPharmCompany().equals(version.getPharmCompany()) : version.getPharmCompany() != null)
+        if (getPharmCompany() != null ? !getPharmCompany().equals(version.getPharmCompany()) : version.getPharmCompany() != null) {
             return false;
-        if (getMedicineCertificate() != null ? !getMedicineCertificate().equals(version.getMedicineCertificate()) : version.getMedicineCertificate() != null)
+        }
+        if (getMedicineCertificate() != null ? !getMedicineCertificate().equals(version.getMedicineCertificate()) : version.getMedicineCertificate() != null) {
             return false;
-        if (getMedicinePackage() != version.getMedicinePackage()) return false;
-        if (getMedicineDosage() != null ? !getMedicineDosage().equals(version.getMedicineDosage()) : version.getMedicineDosage() != null)
+        }
+        if (getMedicinePackage() != version.getMedicinePackage()) {
             return false;
+        }
+        if (getMedicineDosage() != null ? !getMedicineDosage().equals(version.getMedicineDosage()) : version.getMedicineDosage() != null) {
+            return false;
+        }
         return getExpirationDate() != null ? getExpirationDate().equals(version.getExpirationDate()) : version.getExpirationDate() == null;
     }
 
@@ -91,12 +96,13 @@ public class Version {
 
     @Override
     public String toString() {
-        return "Version{" +
-                "pharmCompany='" + pharmCompany + '\'' +
-                ", medicineCertificate='" + medicineCertificate + '\'' +
-                ", medicinePackage=" + medicinePackage +
-                ", medicineDosage='" + medicineDosage + '\'' +
-                ", expirationDate=" + expirationDate +
-                '}';
+        final StringBuilder sb = new StringBuilder("Version{");
+        sb.append("pharmCompany='").append(pharmCompany).append('\'');
+        sb.append(", medicineCertificate='").append(medicineCertificate).append('\'');
+        sb.append(", medicinePackage=").append(medicinePackage);
+        sb.append(", medicineDosage='").append(medicineDosage).append('\'');
+        sb.append(", expirationDate=").append(expirationDate);
+        sb.append('}');
+        return sb.toString();
     }
 }

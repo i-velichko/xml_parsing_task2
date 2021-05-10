@@ -1,13 +1,16 @@
 package com.epam.secondtask.builder.stax;
 
 import com.epam.secondtask.builder.AbstractMedicinesBuilder;
+import com.epam.secondtask.builder.type.MedicineXmlTag;
+import com.epam.secondtask.exception.MedicineXmlException;
 import com.epam.secondtask.model.Homeopathy;
 import com.epam.secondtask.model.Medicine;
 import com.epam.secondtask.model.Vaccine;
 import com.epam.secondtask.model.Version;
 import com.epam.secondtask.model.type.MedicineGroupType;
 import com.epam.secondtask.model.type.MedicinePackageType;
-import com.epam.secondtask.builder.type.MedicineXmlTag;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamConstants;
@@ -20,9 +23,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MedicinesStaxBuilder extends AbstractMedicinesBuilder {
-    private List<Medicine> medicines;
-    private XMLInputFactory inputFactory;
-    private List<MedicineXmlTag> anyMedicineTagList = List.of(MedicineXmlTag.MEDICINE, MedicineXmlTag.VACCINE, MedicineXmlTag.HOMEOPATHY);
+    private final static Logger LOGGER = LogManager.getLogger();
+    private final List<Medicine> medicines;
+    private final XMLInputFactory inputFactory;
+    private final List<MedicineXmlTag> anyMedicineTagList = List.of(MedicineXmlTag.MEDICINE, MedicineXmlTag.VACCINE, MedicineXmlTag.HOMEOPATHY);
 
     public MedicinesStaxBuilder() {
         inputFactory = XMLInputFactory.newInstance();
@@ -43,7 +47,7 @@ public class MedicinesStaxBuilder extends AbstractMedicinesBuilder {
     }
 
     @Override
-    public void buildListMedicines(String filename) {
+    public void buildListMedicines(String filename) throws MedicineXmlException {
         XMLStreamReader reader;
         String name;
         try (FileInputStream inputStream = new FileInputStream(filename)) {
@@ -59,17 +63,16 @@ public class MedicinesStaxBuilder extends AbstractMedicinesBuilder {
                     }
                 }
             }
+            LOGGER.info("The list of medicine was created by STAX parser.");
         } catch (XMLStreamException | InstantiationException | IllegalAccessException | IOException e) {
-            e.printStackTrace();
+            throw new MedicineXmlException("Can not parse file with STAX parser " + e.getMessage());
         }
     }
 
     private Medicine buildAnyMedicine(XMLStreamReader reader, Medicine medicine) throws XMLStreamException, InstantiationException, IllegalAccessException {
-
         medicine.setMedicineId(reader.getAttributeValue(null, MedicineXmlTag.ID.toString()));
-        // null check
-        medicine.setPrescription(reader.getAttributeValue(null,
-                MedicineXmlTag.PRESCRIPTION.toString()));
+        String prescription = reader.getAttributeValue(null, MedicineXmlTag.PRESCRIPTION.toString());
+        medicine.setPrescription(prescription == null ? "true" : prescription);
         String name;
         while (reader.hasNext()) {
             int type = reader.next();
@@ -88,6 +91,7 @@ public class MedicinesStaxBuilder extends AbstractMedicinesBuilder {
                 case XMLStreamConstants.END_ELEMENT -> {
                     name = reader.getLocalName();
                     if (anyMedicineTagList.contains(MedicineXmlTag.valueOf(name.toUpperCase()))) {
+                        LOGGER.debug("The medicine instance was created and filled with content by STAX parser.");
                         return medicine;
                     }
                 }
@@ -101,7 +105,7 @@ public class MedicinesStaxBuilder extends AbstractMedicinesBuilder {
         String name;
 
         while (reader.hasNext()) {
-            String analog = null;
+            String analog;
             int type = reader.next();
             switch (type) {
                 case XMLStreamConstants.START_ELEMENT -> {
@@ -151,7 +155,7 @@ public class MedicinesStaxBuilder extends AbstractMedicinesBuilder {
         while (reader.hasNext()) {
             int type = reader.next();
             switch (type) {
-                case XMLStreamConstants.START_ELEMENT:
+                case XMLStreamConstants.START_ELEMENT -> {
                     name = reader.getLocalName();
                     switch (MedicineXmlTag.valueOf(name.toUpperCase())) {
                         case PHARM -> version.setPharmCompany(getXMLText(reader));
@@ -160,12 +164,13 @@ public class MedicinesStaxBuilder extends AbstractMedicinesBuilder {
                         case DOSAGE -> version.setMedicineDosage(getXMLText(reader));
                         case EXPIRATION_DATE -> version.setExpirationDate(YearMonth.parse(getXMLText(reader)));
                     }
-                    break;
-                case XMLStreamConstants.END_ELEMENT:
+                }
+                case XMLStreamConstants.END_ELEMENT -> {
                     name = reader.getLocalName();
                     if (MedicineXmlTag.valueOf(name.toUpperCase()) == MedicineXmlTag.VERSION) {
                         return version;
                     }
+                }
             }
         }
         throw new XMLStreamException("Unknown element in tag <version>");

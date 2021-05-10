@@ -28,7 +28,7 @@
         </versions>
     </medicine>
 
-    <medicine id="M2" prescription="true">
+    <medicine id="M2">
         <name>Captopril</name>
         <group>Hypotensive</group>
         <analogs>
@@ -308,7 +308,7 @@
 
     </medicine>
 
-    <medicine id="M15" prescription="true">
+    <medicine id="M15">
         <name>Dexamethason</name>
         <group>Hormonal</group>
         <analogs>
@@ -327,7 +327,7 @@
         </versions>
     </medicine>
 
-    <homeopathy id="M16" prescription="true">
+    <homeopathy id="M16">
         <name>Dormikind</name>
         <group>Sedatives</group>
         <analogs>
@@ -345,7 +345,7 @@
         <active_substance>Cypripedium_pubescens</active_substance>
     </homeopathy>
 
-    <vaccine id="M17" prescription="true">
+    <vaccine id="M17">
         <name>bcg_vaccine</name>
         <group>Vaccines</group>
         <analogs>

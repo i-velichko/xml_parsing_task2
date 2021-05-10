@@ -1,5 +1,6 @@
 package com.epam.secondtask.builder.sax;
 
+import com.epam.secondtask.exception.MedicineXmlException;
 import com.epam.secondtask.model.Medicine;
 import com.epam.secondtask.model.Version;
 import com.epam.secondtask.model.type.MedicineGroupType;
@@ -12,16 +13,15 @@ import java.time.YearMonth;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.testng.Assert.*;
-
 public class MedicinesSaxBuilderTest {
     private MedicinesSaxBuilder medicinesSaxBuilder;
-    private Medicine medicine;
+    private Medicine expectedMedicineInstance;
     private final static String PATH_TO_XML_FILE = "src/test/recourses/medicines.xml";
-    int expected = 17;
+    private final static String WRONG_PATH_TO_XML_FILE = "src/test/recoudewdewdqdrses/medicines.xml";
+    int expectedListMedicinesSize = 17;
 
     @BeforeMethod
-    public void setUp() {
+    public void setUp() throws MedicineXmlException {
         medicinesSaxBuilder = new MedicinesSaxBuilder();
         List<String> analogs = new ArrayList<>();
         analogs.add("Magnelek");
@@ -34,25 +34,26 @@ public class MedicinesSaxBuilderTest {
                 MedicinePackageType.SOLUTE, "3-4 ampoules per day, divided into 2-3 doses with meals.", YearMonth.parse("2023-04"));
         versions.add(version1);
         versions.add(version2);
-        medicine = new Medicine("M1","false", "Magne B6", MedicineGroupType.VITAMINS, analogs, versions );
+        expectedMedicineInstance = new Medicine("M1","false", "Magne B6", MedicineGroupType.VITAMINS, analogs, versions );
 
     }
 
     @Test
-    public void testGetMedicines() {
-    }
-
-    @Test
-    public void testIsNotEmptyListMedicines() {
+    public void testIsNotEmptyListMedicines() throws MedicineXmlException {
         medicinesSaxBuilder.buildListMedicines(PATH_TO_XML_FILE);
-        int actual = medicinesSaxBuilder.getMedicines().size();
-        Assert.assertEquals(actual, expected);
+        int  actualListSize= medicinesSaxBuilder.getMedicines().size();
+        Assert.assertEquals(actualListSize, expectedListMedicinesSize);
     }
 
     @Test
-    public void testBuildListMedicines() {
+    public void testBuildListMedicines() throws MedicineXmlException {
         medicinesSaxBuilder.buildListMedicines(PATH_TO_XML_FILE);
         Medicine actualMedicineInstance = medicinesSaxBuilder.getMedicines().get(0);
-        Assert.assertEquals(actualMedicineInstance, medicine );
+        Assert.assertEquals(actualMedicineInstance, expectedMedicineInstance);
+    }
+
+    @Test(expectedExceptions = MedicineXmlException.class)
+    public void testIsUncorrectedPathToFile() throws MedicineXmlException {
+        medicinesSaxBuilder.buildListMedicines(WRONG_PATH_TO_XML_FILE);
     }
 }

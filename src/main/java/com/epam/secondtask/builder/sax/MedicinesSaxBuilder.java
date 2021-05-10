@@ -1,7 +1,10 @@
 package com.epam.secondtask.builder.sax;
 
 import com.epam.secondtask.builder.AbstractMedicinesBuilder;
+import com.epam.secondtask.exception.MedicineXmlException;
 import com.epam.secondtask.model.Medicine;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.xml.sax.SAXException;
 import org.xml.sax.XMLReader;
 
@@ -11,11 +14,10 @@ import javax.xml.parsers.SAXParserFactory;
 import java.io.IOException;
 import java.util.List;
 
-
 public class MedicinesSaxBuilder extends AbstractMedicinesBuilder {
-    private final static String pathToFile = "src/main/resources/data/medicines.xml";
+    private final static Logger LOGGER = LogManager.getLogger();
+    private final MedicineHandler handler = new MedicineHandler();
     private List<Medicine> medicines;
-    private MedicineHandler handler = new MedicineHandler();
     private XMLReader reader;
 
     public MedicinesSaxBuilder() {
@@ -24,7 +26,7 @@ public class MedicinesSaxBuilder extends AbstractMedicinesBuilder {
             SAXParser saxParser = factory.newSAXParser();
             reader = saxParser.getXMLReader();
         } catch (ParserConfigurationException | SAXException e) {
-            e.printStackTrace(); // log
+            LOGGER.error(e.getMessage());
         }
         reader.setErrorHandler(new MedicineErrorHandler());
         reader.setContentHandler(handler);
@@ -35,13 +37,14 @@ public class MedicinesSaxBuilder extends AbstractMedicinesBuilder {
     }
 
     @Override
-    public void buildListMedicines(String pathToFile) {
+    public void buildListMedicines(String pathToFile) throws MedicineXmlException {
         try {
             reader.parse(pathToFile);
         } catch (IOException | SAXException e) {
-            e.printStackTrace(); // log
+            throw new MedicineXmlException("Can not parse file with SAX parser" + e.getMessage());
         }
         medicines = handler.getMedicines();
+        LOGGER.info("The list of medicine was created by SAX parser.");
     }
 }
 

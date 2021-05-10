@@ -1,12 +1,13 @@
 package com.epam.secondtask.builder.sax;
 
-import com.epam.secondtask.model.type.MedicineGroupType;
-import com.epam.secondtask.model.type.MedicinePackageType;
 import com.epam.secondtask.builder.type.MedicineXmlTag;
+import com.epam.secondtask.exception.MedicineXmlException;
 import com.epam.secondtask.model.Homeopathy;
 import com.epam.secondtask.model.Medicine;
 import com.epam.secondtask.model.Vaccine;
 import com.epam.secondtask.model.Version;
+import com.epam.secondtask.model.type.MedicineGroupType;
+import com.epam.secondtask.model.type.MedicinePackageType;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.xml.sax.Attributes;
@@ -17,17 +18,17 @@ import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.List;
 
-public class MedicineHandler extends DefaultHandler { //класс, который будет вызывать парсер
+public class MedicineHandler extends DefaultHandler {
+    private final static Logger LOGGER = LogManager.getLogger();
     private final List<MedicineXmlTag> anyMedicineTagList = List.of(MedicineXmlTag.MEDICINE, MedicineXmlTag.VACCINE, MedicineXmlTag.HOMEOPATHY);
     private final List<Medicine> medicines;
+    private final EnumSet<MedicineXmlTag> medicineXmlTags;
     private Medicine currentMedicine;
     private Version currentVersion;
     private MedicineXmlTag currentXmlTag;
-    private final EnumSet<MedicineXmlTag> medicineXmlTags;
     private List<String> analogs;
     private List<Version> versions;
     private String analog;
-    private static Logger logger = LogManager.getLogger();
 
     public MedicineHandler() {
         medicines = new ArrayList<>();
@@ -40,7 +41,11 @@ public class MedicineHandler extends DefaultHandler { //класс, которы
 
     public void startElement(String uri, String localName, String qName, Attributes attrs) {
         if (anyMedicineTagList.contains(MedicineXmlTag.valueOf(qName.toUpperCase()))) {
-            currentMedicine = createSpecificMedicine(qName);
+            try {
+                currentMedicine = createSpecificMedicine(qName);
+            } catch (MedicineXmlException e) {
+                LOGGER.error("Can not build specific medicine instance" + e.getMessage());
+            }
 
             for (int i = 0; i < attrs.getLength(); i++) {
                 String attributeName = attrs.getQName(i);
@@ -50,10 +55,7 @@ public class MedicineHandler extends DefaultHandler { //класс, которы
                     currentMedicine.setMedicineId(medicineID);
                 } else if (attributeName.equals(MedicineXmlTag.PRESCRIPTION.toString())) {
                     String prescription = attrs.getValue(i);
-
-                    if (!prescription.isBlank()) {
-                        currentMedicine.setPrescription(prescription);
-                    }
+                    currentMedicine.setPrescription(prescription != null ? prescription : "true");
                 }
 
             }
@@ -78,7 +80,7 @@ public class MedicineHandler extends DefaultHandler { //класс, которы
 
     }
 
-    private Medicine createSpecificMedicine(String qName) {
+    private Medicine createSpecificMedicine(String qName) throws MedicineXmlException {
         switch (qName) {
             case "medicine":
                 return new Medicine();
@@ -87,12 +89,15 @@ public class MedicineHandler extends DefaultHandler { //класс, которы
             case "vaccine":
                 return new Vaccine();
         }
-        throw new RuntimeException(); //todo mine exception
+        throw new MedicineXmlException();
     }
 
     public void endElement(String uri, String localName, String qName) {
         switch (qName) {
-            case "medicine", "homeopathy", "vaccine" -> medicines.add(currentMedicine);
+            case "medicine", "homeopathy", "vaccine" -> {
+                medicines.add(currentMedicine);
+                LOGGER.debug("The medicine instance was created and filled with content by SAX parser.");
+            }
             case "analogs" -> currentMedicine.setAnalogs(analogs);
             case "analog" -> analogs.add(analog);
             case "versions" -> currentMedicine.setMedicineVersions(versions);
@@ -117,7 +122,7 @@ public class MedicineHandler extends DefaultHandler { //класс, которы
                     case EXPIRATION_DATE -> currentVersion.setExpirationDate(YearMonth.parse(data));
                 }
             } catch (EnumConstantNotPresentException e) {
-                //log + currentXmlTag.getDeclaringClass(), currentXmlTag.name());
+                LOGGER.error("Error in filling in fields " + e.getMessage());
             }
 
         }

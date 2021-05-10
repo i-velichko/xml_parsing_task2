@@ -15,11 +15,6 @@ public class Medicine {
     public Medicine() {
     }
 
-    public Medicine(String medicineId, String medicineName) {
-        this.medicineId = medicineId;
-        this.medicineName = medicineName;
-    }
-
     public Medicine(String medicineId, String prescription, String medicineName, MedicineGroupType medicineGroup, List<String> analogs, List<Version> medicineVersions) {
         this.medicineId = medicineId;
         this.prescription = prescription;
@@ -35,10 +30,6 @@ public class Medicine {
 
     public void setMedicineId(String medicineId) {
         this.medicineId = medicineId;
-    }
-
-    public String isPrescription() {
-        return prescription;
     }
 
     public void setPrescription(String prescription) {
@@ -79,20 +70,30 @@ public class Medicine {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
 
         Medicine medicine = (Medicine) o;
 
-        if (getMedicineId() != null ? !getMedicineId().equals(medicine.getMedicineId()) : medicine.getMedicineId() != null)
+        if (getMedicineId() != null ? !getMedicineId().equals(medicine.getMedicineId()) : medicine.getMedicineId() != null) {
             return false;
-        if (prescription != null ? !medicine.prescription.equals(prescription) : medicine.prescription != null)
+        }
+        if (prescription != null ? !medicine.prescription.equals(prescription) : medicine.prescription != null) {
             return false;
-        if (getMedicineName() != null ? !getMedicineName().equals(medicine.getMedicineName()) : medicine.getMedicineName() != null)
+        }
+        if (getMedicineName() != null ? !getMedicineName().equals(medicine.getMedicineName()) : medicine.getMedicineName() != null) {
             return false;
-        if (getMedicineGroup() != medicine.getMedicineGroup()) return false;
-        if (getAnalogs() != null ? !getAnalogs().equals(medicine.getAnalogs()) : medicine.getAnalogs() != null)
+        }
+        if (getMedicineGroup() != medicine.getMedicineGroup()) {
             return false;
+        }
+        if (getAnalogs() != null ? !getAnalogs().equals(medicine.getAnalogs()) : medicine.getAnalogs() != null) {
+            return false;
+        }
         return getMedicineVersions() != null ? getMedicineVersions().equals(medicine.getMedicineVersions()) : medicine.getMedicineVersions() == null;
     }
 
@@ -109,14 +110,14 @@ public class Medicine {
 
     @Override
     public String toString() {
-        return "Medicine{" +
-                "medicineId='" + medicineId + '\'' +
-                ", prescription=" + prescription +
-                ", medicineName='" + medicineName + '\'' +
-                ", medicineGroup=" + medicineGroup +
-                ", analogs=" + analogs +
-                ", medicineVersions=" + medicineVersions +
-                '}';
+        final StringBuilder sb = new StringBuilder("Medicine{");
+        sb.append("medicineId='").append(medicineId).append('\'');
+        sb.append(", prescription='").append(prescription).append('\'');
+        sb.append(", medicineName='").append(medicineName).append('\'');
+        sb.append(", medicineGroup=").append(medicineGroup);
+        sb.append(", analogs=").append(analogs);
+        sb.append(", medicineVersions=").append(medicineVersions);
+        sb.append('}');
+        return sb.toString();
     }
-
 }

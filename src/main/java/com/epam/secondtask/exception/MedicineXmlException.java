@@ -1,6 +1,6 @@
 package com.epam.secondtask.exception;
 
-public class MedicineXmlException extends Exception{
+public class MedicineXmlException extends Exception {
 
     public MedicineXmlException() {
     }

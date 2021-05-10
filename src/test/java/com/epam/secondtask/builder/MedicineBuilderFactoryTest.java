@@ -34,7 +34,7 @@ public class MedicineBuilderFactoryTest {
         Assert.assertEquals(staxBuilder.getClass(), MedicinesStaxBuilder.class);
     }
 
-    @Test(expectedExceptions = MedicineXmlException.class)
+    @Test(expectedExceptions = IllegalArgumentException.class)
     public void testCreateNonExistentBuilder() throws MedicineXmlException {
         builderFactory.createMedicineBuilder("JAXB");
     }
